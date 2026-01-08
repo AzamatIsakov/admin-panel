@@ -10,10 +10,19 @@ export default {
     "./app/error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // Добавляем Nunito Sans как основной шрифт
+      fontFamily: {
+        sans: ['"Nunito Sans"', "sans-serif"],
+      },
+      // Цвета из твоего макета
+      colors: {
+        dark: {
+          bg: "#1B2431",
+          sidebar: "#273142",
+        },
+      },
+    },
   },
   plugins: [],
-  corePlugins: {
-    preflight: false,
-  },
 };

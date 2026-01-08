@@ -7,7 +7,18 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/google-fonts",
   ],
+
+  css: ["~/assets/css/main.css"],
+
+  googleFonts: {
+    families: {
+      "Nunito+Sans": [300, 400, 600, 700, 800], // Веса из твоего списка
+    },
+    display: "swap",
+  },
+
   antd: {
     // Options
     extractStyle: true,

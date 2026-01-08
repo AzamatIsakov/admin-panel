@@ -1,0 +1,9 @@
+/* Принудительно задаем шрифт для всего сайта */
+body,
+#__nuxt,
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-menu {
+  font-family: "Nunito Sans", sans-serif !important;
+}

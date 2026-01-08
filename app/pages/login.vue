@@ -1,5 +1,7 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div
+    class="min-h-screen flex items-center justify-center bg-[#F5F6FA] dark:bg-[#1B2431]"
+  >
     <a-card
       class="w-full max-w-md shadow-lg"
       title="Вход в систему"
