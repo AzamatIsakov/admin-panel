@@ -1,33 +1,40 @@
 <template>
   <a-layout-sider
     width="240"
+    collapsedWidth="85"
     :collapsed="collapsed"
     :trigger="null"
     collapsible
-    class="sidebar-transition !bg-white dark:!bg-dark-sidebar"
+    class="!bg-white dark:!bg-dark-sidebar"
   >
     <!-- Логотип -->
-    <div class="h-16 flex items-center justify-center">
-      <h1
-        class="text-2xl font-black m-0 tracking-tight transition-colors duration-300 text-gray-800 dark:text-white"
-      >
-        <span v-if="!collapsed" class="flex items-center gap-2">
-          <span class="text-blue-500 text-3xl">D</span>ashStack
-        </span>
-        <span v-else class="text-blue-500 text-3xl">DS</span>
+    <div class="h-[70px] flex items-center justify-center">
+      <h1 class="text-[#202224] dark:text-white">
+        <NuxtLink
+          to="/"
+          v-if="!collapsed"
+          class="font-extrabold text-xl leading-none hover:text-[#202224] hover:dark:text-white"
+        >
+          <span class="text-blue-500">Dash</span>Stack
+        </NuxtLink>
+        <MenuUnfoldOutlined
+          v-else
+          @click="$emit('toggleSidebar')"
+          class="text-xl cursor-pointer hover:text-blue-500 transition"
+        />
       </h1>
     </div>
 
     <!-- Меню -->
     <div
-      class="flex flex-col justify-between h-[calc(100vh-64px)] overflow-y-auto py-4"
+      class="flex flex-col justify-between h-[calc(100vh-70px)] overflow-y-auto py-4"
     >
       <a-menu
         v-model:selectedKeys="state.selectedKeys"
         mode="inline"
         :theme="themeStore.isDark ? 'dark' : 'light'"
         :items="menuItems"
-        class="border-none custom-menu !bg-transparent"
+        class="custom-menu border-none !bg-transparent"
         @click="handleMenuClick"
       />
 
@@ -37,7 +44,7 @@
           mode="inline"
           :theme="themeStore.isDark ? 'dark' : 'light'"
           :selectable="false"
-          class="border-none custom-menu !bg-transparent"
+          class="custom-menu border-none !bg-transparent"
         >
           <a-menu-item key="settings" class="!my-1">
             <template #icon><SettingOutlined /></template>
@@ -59,18 +66,20 @@ import { h, reactive, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import type { ItemType, MenuProps } from "ant-design-vue";
 import {
-  AppstoreOutlined,
-  ShopOutlined,
-  HeartOutlined,
-  InboxOutlined,
-  UnorderedListOutlined,
+  BorderOuterOutlined,
   SettingOutlined,
   PoweroffOutlined,
   TeamOutlined,
-  TableOutlined,
+  DashboardOutlined,
 } from "@ant-design/icons-vue";
 
-const props = defineProps<{ collapsed: boolean }>();
+interface Props {
+  collapsed: boolean;
+}
+
+const props = defineProps<Props>();
+defineEmits(["toggleSidebar"]);
+
 const themeStore = useThemeStore();
 const authStore = useAuthStore();
 const router = useRouter();
@@ -91,41 +100,21 @@ watch(
 const menuItems: ItemType[] = [
   {
     key: "dashboard",
-    icon: () => h(AppstoreOutlined),
+    icon: () => h(DashboardOutlined),
     label: "Dashboard",
     title: "Dashboard",
   },
   {
     key: "products",
-    icon: () => h(ShopOutlined),
+    icon: () => h(BorderOuterOutlined),
     label: "Products",
     title: "Products",
   },
   {
-    key: "favorites",
-    icon: () => h(HeartOutlined),
-    label: "Favorites",
-    title: "Favorites",
-  },
-  {
-    key: "inbox",
-    icon: () => h(InboxOutlined),
-    label: "Inbox",
-    title: "Inbox",
-  },
-  {
-    key: "orders",
-    icon: () => h(UnorderedListOutlined),
-    label: "Order Lists",
-    title: "Order Lists",
-  },
-  { type: "divider", class: "my-4 opacity-50" },
-  { key: "users", label: "Team", icon: () => h(TeamOutlined), title: "Team" },
-  {
-    key: "table",
-    label: "Table",
-    icon: () => h(TableOutlined),
-    title: "Table",
+    key: "users",
+    icon: () => h(TeamOutlined),
+    label: "Users",
+    title: "Users",
   },
 ];
 
@@ -140,23 +129,45 @@ const handleLogout = () => authStore.logout();
 </script>
 
 <style>
-/* Стили для активного элемента остаются, они универсальны */
+.custom-menu {
+  @apply !space-y-1;
+}
+
+.custom-menu.ant-menu-inline-collapsed .ant-menu-item {
+  @apply !px-8;
+}
+
+.custom-menu.ant-menu-inline-collapsed .ant-menu-item-selected {
+  @apply !bg-transparent !text-[#4880ff];
+}
+
+.custom-menu .ant-menu-item {
+  @apply !py-4 !px-10 !m-0 !w-full !h-[52px] !rounded-none  text-sm !leading-[19px] font-semibold tracking-[0.3px];
+}
+
+.custom-menu .ant-menu-item .ant-menu-item-icon {
+  @apply relative z-10 text-lg;
+}
+
+.custom-menu .ant-menu-item .ant-menu-title-content {
+  @apply relative z-10 !ml-4;
+}
+
 .custom-menu .ant-menu-item-selected {
-  background-color: #4880ff !important;
-  color: white !important;
-  border-radius: 8px;
-  margin: 0 10px;
-  width: calc(100% - 20px);
+  @apply !relative  !bg-transparent !text-white select-none cursor-default;
+}
+
+.custom-menu .ant-menu-item-selected::before {
+  content: "";
+  @apply absolute left-0 top-0 -translate-x-1/2 w-2 rounded h-full bg-[#4880ff];
+}
+
+.custom-menu .ant-menu-item-selected::after {
+  @apply !absolute !bg-[#4880ff] left-1/2 top-0 w-[calc(100%_-_48px)] rounded-md !-translate-x-1/2;
 }
 
 /* А вот ховер для темной темы делаем через CSS селектор .dark (Tailwind тут сложнее применить к внутренностям AntD) */
 .dark .custom-menu .ant-menu-item:hover:not(.ant-menu-item-selected) {
   background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.ant-menu-inline,
-.ant-menu-vertical,
-.ant-menu-vertical-left {
-  border-right: none !important;
 }
 </style>

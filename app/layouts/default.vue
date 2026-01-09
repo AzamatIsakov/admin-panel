@@ -3,10 +3,10 @@
   <a-layout
     class="min-h-screen transition-colors duration-300 bg-[#F5F6FA] dark:bg-dark-bg"
   >
-    <LayoutSidebar :collapsed="collapsed" />
+    <LayoutSidebar :collapsed="collapsed" @toggle-sidebar="toggleSidebar" />
 
     <a-layout class="!bg-transparent">
-      <LayoutHeader @toggle-sidebar="toggleSidebar" />
+      <LayoutHeader :collapsed @toggle-sidebar="toggleSidebar" />
 
       <a-layout-content class="p-6 overflow-x-hidden">
         <slot />

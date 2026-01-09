@@ -3,15 +3,15 @@
     class="flex items-center justify-between px-6 shadow-sm h-16 sticky top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-sidebar dark:text-white"
   >
     <!-- Левая часть -->
-    <div class="flex items-center gap-4">
-      <MenuOutlined
+    <div v-if="!collapsed" class="flex items-center gap-4">
+      <MenuFoldOutlined
         class="text-xl cursor-pointer hover:text-blue-500 transition"
         @click="$emit('toggleSidebar')"
       />
     </div>
 
     <!-- Правая часть -->
-    <div class="flex items-center gap-6">
+    <div class="ml-auto flex items-center gap-6">
       <!-- Свитч темы -->
       <a-switch
         :checked="themeStore.isDark"
@@ -75,10 +75,15 @@ import {
   DownOutlined,
 } from "@ant-design/icons-vue";
 
+interface Props {
+  collapsed: boolean;
+}
+
+const props = defineProps<Props>();
+defineEmits(["toggleSidebar"]);
+
 const authStore = useAuthStore();
 const themeStore = useThemeStore();
-
-defineEmits(["toggleSidebar"]);
 </script>
 
 <style scoped>
