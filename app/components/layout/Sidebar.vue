@@ -165,9 +165,4 @@ const handleLogout = () => authStore.logout();
 .custom-menu .ant-menu-item-selected::after {
   @apply !absolute !bg-[#4880ff] left-1/2 top-0 w-[calc(100%_-_48px)] rounded-md !-translate-x-1/2;
 }
-
-/* А вот ховер для темной темы делаем через CSS селектор .dark (Tailwind тут сложнее применить к внутренностям AntD) */
-.dark .custom-menu .ant-menu-item:hover:not(.ant-menu-item-selected) {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
 </style>
