@@ -12,7 +12,7 @@
     </div>
 
     <!-- Правая часть: Композиция элементов -->
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-[26px]">
       <!-- Переключатель темы -->
       <HeaderThemeToggle />
 

@@ -1,9 +1,7 @@
 <!-- components/header/UserDropdown.vue -->
 <template>
   <!-- Контейнер с бордером слева -->
-  <div
-    class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-600"
-  >
+  <div class="flex items-center gap-3">
     <a-dropdown>
       <div class="flex items-center gap-3 cursor-pointer group">
         <!-- Аватар -->

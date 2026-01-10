@@ -117,6 +117,7 @@ const { state, menuItems, handleMenuClick, handleLogout } = useSidebar();
 }
 
 .custom-menu .ant-menu-item-selected::after {
-  @apply !absolute !bg-[#4880ff] left-1/2 top-0 w-[calc(100%_-_48px)] rounded-md !-translate-x-1/2;
+  content: "";
+  @apply absolute !bg-[#4880ff] left-1/2 top-0 w-[calc(100%_-_48px)] rounded-md !-translate-x-1/2;
 }
 </style>
