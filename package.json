@@ -12,6 +12,7 @@
   "dependencies": {
     "@ant-design-vue/nuxt": "^1.4.6",
     "@nuxt/eslint": "^1.12.1",
+    "@nuxt/image": "^2.0.0",
     "@pinia/nuxt": "^0.11.3",
     "ant-design-vue": "^4.2.6",
     "eslint": "^9.39.2",

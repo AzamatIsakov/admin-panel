@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/google-fonts",
+    "@nuxt/image",
   ],
 
   css: ["~/assets/css/main.css"],
