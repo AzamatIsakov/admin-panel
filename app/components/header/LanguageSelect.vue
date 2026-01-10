@@ -1,29 +1,32 @@
 <template>
   <a-dropdown
-    class="dropdown"
+    class="w-[152px]"
     trigger="click"
     placement="bottom"
     overlay-class-name="custom-dropdown"
   >
     <div
-      class="flex items-center gap-2 cursor-pointer text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
+      class="flex items-center gap-4 cursor-pointer text-[#646464] dark:text-white transition-colors h-[27px]"
     >
       <NuxtImg
-        src="https://flagcdn.com/w20/gb.png"
-        alt="en"
-        class="rounded-sm w-5 h-auto shadow-sm"
+        :src="selectedLanguage.image"
+        :alt="selectedLanguage.key"
+        class="h-[27px] aspect-[3/2] rounded-[5px]"
       />
-      <span class="hidden sm:block font-medium">English</span>
-      <DownOutlined class="text-xs text-gray-400" />
+      <span class="flex items-center gap-2 text-sm leading-none font-semibold">
+        {{ selectedLanguage.label }}
+        <LucideChevronDown class="size-5 text-gray-400" />
+      </span>
+      <!-- <DownOutlined class="text-lg text-gray-400" /> -->
     </div>
 
     <template #overlay>
       <a-menu class="w-[254px]" @click="onSelect">
         <a-menu-item
           disabled
-          class="!px-5 !pt-3.5 !pb-3 !cursor-default !text-black dark:!text-white text-sm font-normal !leading-none"
+          class="!px-5 !pt-3.5 !pb-3 !cursor-default !text-black dark:!text-white text-sm font-normal !leading-none !bg-transparent"
         >
-          Выберите вариант
+          {{ $t("header.select_language") }}
         </a-menu-item>
 
         <a-menu-divider class="!my-0" />
@@ -31,11 +34,12 @@
         <a-menu-item
           v-for="language in languageItems"
           :key="language.key"
-          class="!px-4 !py-[15px] text-sm leading-none font-semibold"
+          class="!px-4 !py-[15px] text-sm leading-none font-semibold !rounded-none"
         >
           <div class="flex items-center gap-2">
             <NuxtImg :src="language.image" class="h-[30px] aspect-[3/2]" />
             {{ language.label }}
+            <LucideCheck v-if="language.key === locale" class="ml-auto" />
           </div>
         </a-menu-item>
       </a-menu>
@@ -44,8 +48,13 @@
 </template>
 
 <script setup lang="ts">
-import { DownOutlined } from "@ant-design/icons-vue";
 import type { MenuProps } from "ant-design-vue";
+
+const { locale, setLocale } = useI18n();
+
+const selectedLanguage = computed(
+  () => languageItems.find((languageItem) => languageItem.key === locale.value)!
+);
 
 const languageItems = [
   {
@@ -66,12 +75,13 @@ const languageItems = [
 ];
 
 const onSelect: MenuProps["onClick"] = ({ key }) => {
-  console.log(key);
+  const newLocale = key as "en" | "ru" | "uz";
+  setLocale(newLocale);
 };
 </script>
 
 <style>
 .custom-dropdown .ant-dropdown-menu {
-  @apply p-0 rounded-xl overflow-hidden;
+  @apply p-0 rounded-xl overflow-hidden dark:bg-dark-primary;
 }
 </style>

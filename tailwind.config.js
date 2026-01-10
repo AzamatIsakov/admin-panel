@@ -18,8 +18,7 @@ export default {
       // Цвета из твоего макета
       colors: {
         dark: {
-          bg: "#1B2431",
-          sidebar: "#273142",
+          primary: "#273142",
         },
       },
     },

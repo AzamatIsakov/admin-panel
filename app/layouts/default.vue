@@ -1,7 +1,7 @@
 <template>
   <!-- Tailwind сам переключит цвет, когда на <html> появится класс dark -->
   <a-layout
-    class="min-h-screen transition-colors duration-300 bg-[#F5F6FA] dark:bg-dark-bg"
+    class="min-h-screen transition-colors duration-300 bg-[#F5F6FA] dark:bg-[#1B2431]"
   >
     <LayoutSidebar :collapsed="collapsed" @toggle-sidebar="toggleSidebar" />
 

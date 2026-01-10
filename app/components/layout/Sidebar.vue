@@ -5,7 +5,7 @@
     :collapsed="collapsed"
     :trigger="null"
     collapsible
-    class="!bg-white dark:!bg-dark-sidebar"
+    class="!bg-white dark:!bg-dark-primary !transition-all !duration-300"
   >
     <!-- Логотип -->
     <div class="h-[70px] flex items-center justify-center">
@@ -38,7 +38,7 @@
         @click="handleMenuClick"
       />
 
-      <!-- Нижние пункты -->
+      <!-- Нижние пункты (Settings/Logout) -->
       <div class="mb-4">
         <a-menu
           mode="inline"
@@ -47,12 +47,17 @@
           class="custom-menu border-none !bg-transparent"
         >
           <a-menu-item key="settings" class="!my-1">
-            <template #icon><SettingOutlined /></template>
-            <span>Settings</span>
+            <template #icon>
+              <LucideSettings />
+            </template>
+            <span>{{ t("menu.settings") }}</span>
           </a-menu-item>
+
           <a-menu-item key="logout" danger @click="handleLogout" class="!my-1">
-            <template #icon><PoweroffOutlined /></template>
-            <span>Logout</span>
+            <template #icon>
+              <LucidePower />
+            </template>
+            <span>{{ t("menu.logout") }}</span>
           </a-menu-item>
         </a-menu>
       </div>
@@ -61,17 +66,7 @@
 </template>
 
 <script setup lang="ts">
-// Скрипт оставляем тот же, что был в прошлом шаге (с исправленными типами ItemType)
-import { h, reactive, watch } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import type { ItemType, MenuProps } from "ant-design-vue";
-import {
-  BorderOuterOutlined,
-  SettingOutlined,
-  PoweroffOutlined,
-  TeamOutlined,
-  DashboardOutlined,
-} from "@ant-design/icons-vue";
+import { MenuUnfoldOutlined } from "@ant-design/icons-vue";
 
 interface Props {
   collapsed: boolean;
@@ -81,54 +76,13 @@ const props = defineProps<Props>();
 defineEmits(["toggleSidebar"]);
 
 const themeStore = useThemeStore();
-const authStore = useAuthStore();
-const router = useRouter();
-const route = useRoute();
+const { t } = useI18n();
 
-const state = reactive({ selectedKeys: ["dashboard"] });
-
-watch(
-  () => route.path,
-  (path) => {
-    if (path === "/") state.selectedKeys = ["dashboard"];
-    else if (path.startsWith("/products")) state.selectedKeys = ["products"];
-    else if (path.startsWith("/users")) state.selectedKeys = ["users"];
-  },
-  { immediate: true }
-);
-
-const menuItems: ItemType[] = [
-  {
-    key: "dashboard",
-    icon: () => h(DashboardOutlined),
-    label: "Dashboard",
-    title: "Dashboard",
-  },
-  {
-    key: "products",
-    icon: () => h(BorderOuterOutlined),
-    label: "Products",
-    title: "Products",
-  },
-  {
-    key: "users",
-    icon: () => h(TeamOutlined),
-    label: "Users",
-    title: "Users",
-  },
-];
-
-const handleMenuClick: MenuProps["onClick"] = (info) => {
-  const key = info.key as string;
-  if (key === "dashboard") router.push("/");
-  else if (key === "products") router.push("/products");
-  else if (key === "users") router.push("/users");
-};
-
-const handleLogout = () => authStore.logout();
+const { state, menuItems, handleMenuClick, handleLogout } = useSidebar();
 </script>
 
 <style>
+/* Твои стили без изменений */
 .custom-menu {
   @apply !space-y-1;
 }
@@ -146,7 +100,7 @@ const handleLogout = () => authStore.logout();
 }
 
 .custom-menu .ant-menu-item .ant-menu-item-icon {
-  @apply relative z-10 text-lg;
+  @apply relative z-10 size-5;
 }
 
 .custom-menu .ant-menu-item .ant-menu-title-content {

@@ -9,7 +9,30 @@ export default defineNuxtConfig({
     "pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/google-fonts",
     "@nuxt/image",
+    "@nuxtjs/i18n",
+    "nuxt-lucide-icons",
   ],
+
+  // Настройки i18n
+  i18n: {
+    langDir: "", // Папка с переводами
+    defaultLocale: "en",
+    strategy: "no_prefix", // Не добавлять /ru или /uz в URL
+    locales: [
+      { code: "en", file: "en.json", name: "English", iso: "en-US" },
+      { code: "ru", file: "ru.json", name: "Русский", iso: "ru-RU" },
+      { code: "uz", file: "uz.json", name: "O'zbekcha", iso: "uz-UZ" },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root",
+    },
+  },
+
+  lucide: {
+    namePrefix: "Lucide",
+  },
 
   css: ["~/assets/css/main.css"],
 

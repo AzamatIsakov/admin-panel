@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "users": "Users",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+
+  "header": {
+    "select_language": "Select Language "
+  }
+}

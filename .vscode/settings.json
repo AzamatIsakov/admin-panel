@@ -1,5 +1,6 @@
 {
   "explorer.expandSingleFolderWorkspaces": true,
   "editor.cursorBlinking": "expand",
-  "explorer.fileNesting.expand": true
+  "explorer.fileNesting.expand": true,
+  "i18n-ally.localesPaths": ["i18n"]
 }

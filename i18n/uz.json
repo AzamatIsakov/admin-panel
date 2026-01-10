@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "dashboard": "Boshqaruv paneli",
+    "products": "Mahsulotlar",
+    "users": "Foydalanuvchilar",
+    "settings": "Sozlamalar",
+    "logout": "Chiqish"
+  },
+
+  "header": {
+    "select_language": "Tilni tanlang "
+  }
+}

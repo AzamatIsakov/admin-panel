@@ -1,6 +1,6 @@
 <template>
   <a-layout-header
-    class="flex items-center justify-between px-6 shadow-sm h-16 sticky top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-sidebar dark:text-white"
+    class="flex items-center justify-between px-6 shadow-sm !h-[70px] sticky top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-primary dark:text-white"
   >
     <!-- Левая часть: Гамбургер -->
     <div class="flex items-center gap-4">
@@ -13,16 +13,16 @@
 
     <!-- Правая часть: Композиция элементов -->
     <div class="flex items-center gap-6">
-      <!-- 1. Переключатель темы -->
+      <!-- Переключатель темы -->
       <HeaderThemeToggle />
 
-      <!-- 2. Уведомления -->
+      <!-- Уведомления -->
       <HeaderNotificationBell />
 
-      <!-- 3. Выбор языка -->
+      <!-- Выбор языка -->
       <HeaderLanguageSelect />
 
-      <!-- 4. Профиль пользователя -->
+      <!-- Профиль пользователя -->
       <HeaderUserDropdown />
     </div>
   </a-layout-header>
@@ -40,8 +40,4 @@ const props = defineProps<Props>();
 defineEmits(["toggleSidebar"]);
 </script>
 
-<style scoped>
-:deep(.ant-layout-header) {
-  padding-inline: 0 !important;
-}
-</style>
+<style scoped></style>

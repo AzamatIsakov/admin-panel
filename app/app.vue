@@ -1,10 +1,12 @@
 <template>
-  <!-- Теперь используем переменные directly, без приставки theme. -->
   <a-config-provider
     :theme="{
       algorithm: themeStore.isDark ? darkAlgorithm : defaultAlgorithm,
       token: {
         fontFamily: 'Nunito Sans, sans-serif',
+        colorPrimary: '#4880FF',
+        colorBgBase: themeStore.isDark ? '#273142' : '#ffffff',
+        colorTextBase: themeStore.isDark ? '#ffffff' : '#202224',
       },
     }"
   >

@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "dashboard": "Дашборд",
+    "products": "Продукты",
+    "users": "Пользователи",
+    "settings": "Настройки",
+    "logout": "Выйти"
+  },
+
+  "header": {
+    "select_language": "Выберите язык "
+  }
+}
