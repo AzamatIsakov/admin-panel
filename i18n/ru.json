@@ -8,6 +8,12 @@
   },
 
   "header": {
-    "select_language": "Выберите язык "
+    "select_language": "Выберите язык",
+    "user_menu": {
+      "manage_account": "Управление аккаунтом",
+      "change_password": "Сменить пароль",
+      "activity_log": "Журнал активности",
+      "logout": "Выйти"
+    }
   }
 }

@@ -8,6 +8,12 @@
   },
 
   "header": {
-    "select_language": "Tilni tanlang "
+    "select_language": "Tilni tanlang",
+    "user_menu": {
+      "manage_account": "Profilni boshqarish",
+      "change_password": "Parolni o'zgartirish",
+      "activity_log": "Faoliyatlar tarixi",
+      "logout": "Chiqish"
+    }
   }
 }

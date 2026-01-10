@@ -8,6 +8,12 @@
   },
 
   "header": {
-    "select_language": "Select Language "
+    "select_language": "Select Language",
+    "user_menu": {
+      "manage_account": "Manage Account",
+      "change_password": "Change Password",
+      "activity_log": "Activity Log",
+      "logout": "Logout"
+    }
   }
 }

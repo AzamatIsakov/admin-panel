@@ -21,7 +21,7 @@
     </div>
 
     <template #overlay>
-      <a-menu class="w-[254px]" @click="onSelect">
+      <a-menu class="w-[254px]" @click="handleLangSelect">
         <a-menu-item
           disabled
           class="!px-5 !pt-3.5 !pb-3 !cursor-default !text-black dark:!text-white text-sm font-normal !leading-none !bg-transparent"
@@ -74,7 +74,7 @@ const languageItems = [
   },
 ];
 
-const onSelect: MenuProps["onClick"] = ({ key }) => {
+const handleLangSelect: MenuProps["onClick"] = ({ key }) => {
   const newLocale = key as "en" | "ru" | "uz";
   setLocale(newLocale);
 };

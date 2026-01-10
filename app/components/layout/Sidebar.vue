@@ -82,7 +82,6 @@ const { state, menuItems, handleMenuClick, handleLogout } = useSidebar();
 </script>
 
 <style>
-/* Твои стили без изменений */
 .custom-menu {
   @apply !space-y-1;
 }

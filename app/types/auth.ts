@@ -7,6 +7,8 @@ export interface User {
   gender: string;
   image: string;
 
+  role?: "admin";
+
   token?: string;
   refreshToken?: string;
 }

@@ -12,7 +12,7 @@ export const useAuthStore = defineStore(
 
     // --- Actions ---
 
-    // 1. Логин
+    // Логин
     async function login(username: string, password: string) {
       try {
         // Используем наш useApi. Обрати внимание на POST метод.
@@ -36,7 +36,7 @@ export const useAuthStore = defineStore(
             refreshToken: _rt,
             ...userData
           } = data.value;
-          user.value = userData;
+          user.value = { ...userData, role: "admin" };
 
           // Редирект на главную (Dashboard) после успешного входа
           // Используем navigateTo (нативный метод Nuxt)
@@ -48,7 +48,7 @@ export const useAuthStore = defineStore(
       }
     }
 
-    // 2. Логаут
+    // Логаут
     function logout() {
       token.value = null;
       refreshToken.value = null;

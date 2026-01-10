@@ -1,52 +1,53 @@
-<!-- components/header/UserDropdown.vue -->
 <template>
-  <!-- Контейнер с бордером слева -->
   <div class="flex items-center gap-3">
-    <a-dropdown>
-      <div class="flex items-center gap-3 cursor-pointer group">
+    <a-dropdown trigger="click" overlay-class-name="custom-dropdown">
+      <div class="flex items-center gap-5 cursor-pointer group">
         <!-- Аватар -->
         <a-avatar
           :src="authStore.user?.image"
           size="large"
-          class="bg-blue-100 border-2 border-transparent group-hover:border-blue-200 transition-all"
+          class="bg-slate-300 size-11"
         />
 
         <!-- Текст -->
-        <div class="hidden sm:block leading-tight">
-          <div
-            class="font-bold text-sm text-gray-800 dark:text-white group-hover:text-blue-500 transition-colors"
-          >
-            {{ authStore.user?.firstName }} {{ authStore.user?.lastName }}
+        <div class="flex items-center gap-[26px]">
+          <div>
+            <div
+              class="font-bold text-sm leading-snug text-[#404040] dark:text-white group-hover:text-blue-500 transition-colors"
+            >
+              {{ authStore.user?.firstName }} {{ authStore.user?.lastName }}
+            </div>
+            <div
+              class="mt-[3px] text-xs leading-snug font-semibold text-gray-500 dark:text-gray-400"
+            >
+              Admin
+            </div>
           </div>
-          <div class="text-xs text-gray-500 dark:text-gray-400">Admin</div>
-        </div>
 
-        <DownOutlined
-          class="hidden sm:block text-xs text-gray-400 group-hover:text-blue-500 transition-colors"
-        />
+          <LucideCircleChevronDown class="stroke-1 size-[18px]" />
+        </div>
       </div>
 
       <template #overlay>
-        <a-menu>
-          <div class="px-4 py-2 border-b mb-1">
-            <p class="text-xs text-gray-400 m-0">Signed in as</p>
-            <p class="font-bold text-gray-800 m-0 truncate w-32">
-              {{ authStore.user?.email }}
-            </p>
-          </div>
-          <a-menu-item key="profile">
-            <template #icon><UserOutlined /></template>
-            Profile
-          </a-menu-item>
-          <a-menu-item key="settings">
-            <template #icon><SettingOutlined /></template>
-            Settings
-          </a-menu-item>
-          <a-menu-divider />
-          <a-menu-item key="logout" danger @click="authStore.logout">
+        <a-menu @click="handleSelect">
+          <template v-for="(item, index) in userMenuItems" :key="item.key">
+            <a-menu-divider v-if="index" class="!my-0" />
+
+            <a-menu-item
+              :id="item.key"
+              class="!px-5 !py-3 !rounded-none"
+              :danger="item.key === 'logout'"
+            >
+              <template #icon>
+                <component :is="item.icon" class="size-5 !mr-2.5" />
+              </template>
+              {{ item.label }}
+            </a-menu-item>
+          </template>
+          <!-- <a-menu-item key="logout" danger @click="authStore.logout">
             <template #icon><LogoutOutlined /></template>
             Logout
-          </a-menu-item>
+          </a-menu-item> -->
         </a-menu>
       </template>
     </a-dropdown>
@@ -54,12 +55,51 @@
 </template>
 
 <script setup lang="ts">
+import type { MenuProps } from "ant-design-vue";
 import {
-  DownOutlined,
-  UserOutlined,
-  SettingOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons-vue";
+  LucideRefreshCcw,
+  LucideUserCog,
+  LucideKeyRound,
+  LucideLogOut,
+} from "lucide-vue-next";
+
+const { t } = useI18n();
 
 const authStore = useAuthStore();
+
+const userMenuItems = computed(() => [
+  {
+    key: "manage-account",
+    icon: LucideUserCog,
+    label: t("header.user_menu.manage_account"),
+  },
+  {
+    key: "change-password",
+    icon: LucideKeyRound,
+    label: t("header.user_menu.change_password"),
+  },
+  {
+    key: "activity-log",
+    icon: LucideRefreshCcw,
+    label: t("header.user_menu.activity_log"),
+  },
+  {
+    key: "logout",
+    icon: LucideLogOut,
+    label: t("header.user_menu.logout"),
+  },
+]);
+
+const handleSelect: MenuProps["onClick"] = (data) => {
+  const eventId = data.item.id;
+  console.log(eventId);
+
+  if (eventId === "logout") authStore.logout();
+};
 </script>
+
+<style>
+.custom-dropdown .ant-dropdown-menu {
+  @apply p-0 !rounded-[14px];
+}
+</style>
