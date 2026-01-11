@@ -19,6 +19,8 @@
 <script setup lang="ts">
 import { theme } from "ant-design-vue";
 
+useScreenListener();
+
 const { defaultAlgorithm, darkAlgorithm } = theme;
 const themeStore = useThemeStore();
 

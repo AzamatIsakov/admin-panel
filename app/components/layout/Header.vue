@@ -1,29 +1,35 @@
 <template>
   <a-layout-header
-    class="flex items-center justify-between px-6 shadow-sm !h-[70px] sticky top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-primary dark:text-white"
+    class="flex items-center justify-between shadow-sm !h-[70px] sticky top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-primary dark:text-white"
+    :class="uiStore.isDesktop ? '!px-[30px]' : '!px-6'"
   >
     <!-- Левая часть: Гамбургер -->
     <div class="flex items-center gap-4">
+      <!-- Кнопка для ДЕСКТОПА (сворачивание) -->
       <MenuOutlined
-        v-if="!collapsed"
+        v-if="!collapsed && uiStore.isDesktop"
         class="text-xl cursor-pointer hover:text-blue-500 transition"
         @click="$emit('toggleSidebar')"
       />
+
+      <!-- Кнопка для МОБИЛКИ (открытие Drawer) -->
+      <MenuOutlined
+        class="lg:hidden text-xl cursor-pointer hover:text-blue-500 transition"
+        @click="$emit('openMobileMenu')"
+      />
     </div>
 
-    <!-- Правая часть: Композиция элементов -->
-    <div class="flex items-center gap-[26px]">
-      <!-- Переключатель темы -->
+    <!-- Правая часть: Скрываем на мобилках (hidden lg:flex) -->
+    <div v-if="uiStore.isDesktop" class="flex items-center gap-[26px]">
       <HeaderThemeToggle />
-
-      <!-- Уведомления -->
       <HeaderNotificationBell />
-
-      <!-- Выбор языка -->
       <HeaderLanguageSelect />
-
-      <!-- Профиль пользователя -->
       <HeaderUserDropdown />
+    </div>
+
+    <!-- Для мобилки можно оставить только колокольчик, если хочется -->
+    <div class="lg:hidden flex items-center">
+      <HeaderNotificationBell />
     </div>
   </a-layout-header>
 </template>
@@ -34,10 +40,8 @@ import { MenuOutlined } from "@ant-design/icons-vue";
 interface Props {
   collapsed: boolean;
 }
+defineProps<Props>();
+defineEmits(["toggleSidebar", "openMobileMenu"]);
 
-const props = defineProps<Props>();
-
-defineEmits(["toggleSidebar"]);
+const uiStore = useUiStore();
 </script>
-
-<style scoped></style>
