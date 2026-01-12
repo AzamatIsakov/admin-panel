@@ -7,7 +7,7 @@
       {{ t("dashboard.value") }}
     </h2>
 
-    <!-- Скелетон загрузки (показываем, пока useDashboard грузит данные) -->
+    <!-- Скелетон загрузки -->
     <div
       v-if="loading"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px] mb-8"
@@ -24,44 +24,14 @@
       v-else
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px] mb-8"
     >
-      <!-- 1. Total User (Синий) -->
       <DashboardStatCard
-        :title="t('dashboard.stat_card.total_user')"
-        :value="stats.users"
-        :trend="8.5"
-        color="blue"
+        v-for="item in dashboardItems"
+        :title="item.title"
+        :value="item.value"
+        :trend="item.trend"
+        :color="item.color"
       >
-        <template #icon><UsergroupAddOutlined /></template>
-      </DashboardStatCard>
-
-      <!-- 2. Total Order (Желтый) -->
-      <DashboardStatCard
-        :title="t('dashboard.stat_card.total_order')"
-        :value="stats.orders"
-        :trend="1.3"
-        color="yellow"
-      >
-        <template #icon><CodeSandboxOutlined /></template>
-      </DashboardStatCard>
-
-      <!-- 3. Total Sales (Зеленый) -->
-      <DashboardStatCard
-        :title="t('dashboard.stat_card.total_sales')"
-        :value="`$${stats.sales}`"
-        :trend="-4.3"
-        color="green"
-      >
-        <template #icon><LineChartOutlined /></template>
-      </DashboardStatCard>
-
-      <!-- 4. Total Pending / Posts (Красный) -->
-      <DashboardStatCard
-        :title="t('dashboard.stat_card.total_pending')"
-        :value="stats.posts"
-        :trend="1.8"
-        color="red"
-      >
-        <template #icon><FieldTimeOutlined /></template>
+        <template #icon><component :is="item.icon" /></template>
       </DashboardStatCard>
     </div>
 
@@ -91,4 +61,39 @@ const { t } = useI18n();
 const { stats, loading, fetchStats } = useDashboard();
 
 fetchStats();
+
+const dashboardItems = computed(() => [
+  // Total User (Синий)
+  {
+    title: t("dashboard.stat_card.total_user"),
+    value: stats.users,
+    trend: 8.5,
+    color: "blue",
+    icon: UsergroupAddOutlined,
+  },
+  // Total Order (Желтый)
+  {
+    title: t("dashboard.stat_card.total_order"),
+    value: stats.orders,
+    trend: 1.3,
+    color: "yellow",
+    icon: CodeSandboxOutlined,
+  },
+  // Total Sales (Зеленый)
+  {
+    title: t("dashboard.stat_card.total_sales"),
+    value: `$${stats.sales}`,
+    trend: -4.3,
+    color: "green",
+    icon: LineChartOutlined,
+  },
+  // Total Pending / Posts (Красный)
+  {
+    title: t("dashboard.stat_card.total_pending"),
+    value: stats.posts,
+    trend: 1.8,
+    color: "red",
+    icon: FieldTimeOutlined,
+  },
+]);
 </script>

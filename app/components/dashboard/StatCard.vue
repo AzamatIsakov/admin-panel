@@ -58,7 +58,7 @@ const props = defineProps<{
   title: string;
   value: number | string;
   trend: number;
-  color: "blue" | "yellow" | "green" | "red";
+  color: "blue" | "yellow" | "green" | "red" | string;
 }>();
 
 // Форматируем число (например: 40,689)
