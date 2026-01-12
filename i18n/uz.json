@@ -26,6 +26,22 @@
       "total_order": "Jami buyurtmalar",
       "total_sales": "Umumiy savdo hajmi",
       "total_pending": "Jami kutilayotgan"
+    },
+    "sales_chart": {
+      "months": {
+        "jan": "Yan",
+        "feb": "Fev",
+        "mar": "Mar",
+        "apr": "Apr",
+        "may": "May",
+        "jun": "Iyun",
+        "jul": "Iyul",
+        "aug": "Avg",
+        "sep": "Sen",
+        "oct": "Okt",
+        "nov": "Noy",
+        "dec": "Dek"
+      }
     }
   }
 }

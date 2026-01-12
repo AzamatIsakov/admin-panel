@@ -35,15 +35,39 @@
       </DashboardStatCard>
     </div>
 
-    <!-- Место под график (следующий шаг) -->
+    <!-- Секция графика -->
     <div
-      class="bg-white dark:bg-dark-primary p-8 rounded-[14px] shadow-sm min-h-[400px]"
+      class="bg-white dark:bg-dark-primary p-8 rounded-[14px] shadow-sm mb-8 transition-colors duration-300"
     >
-      <h3 class="text-xl font-bold mb-4 dark:text-white">Sales Details</h3>
-      <div
-        class="flex items-center justify-center h-64 text-gray-400 bg-gray-50 dark:bg-dark-bg rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700"
-      >
-        График будет здесь
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-[#202224] dark:text-white">
+          Sales Details
+        </h3>
+
+        <!-- Дропдаун выбора месяца (фейковый для вида) -->
+        <a-select
+          defaultValue="october"
+          class="w-32"
+          :class="{ 'dark-select': themeStore.isDark }"
+        >
+          <a-select-option value="october">October</a-select-option>
+          <a-select-option value="november">November</a-select-option>
+        </a-select>
+      </div>
+
+      <div class="h-[350px] w-full">
+        <ClientOnly>
+          <DashboardSalesChart />
+
+          <!-- Скелетон на случай долгой загрузки чанка с графиком -->
+          <template #fallback>
+            <div
+              class="w-full h-full flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded animate-pulse"
+            >
+              Loading Chart...
+            </div>
+          </template>
+        </ClientOnly>
       </div>
     </div>
   </div>
@@ -59,6 +83,7 @@ import {
 
 const { t } = useI18n();
 const { stats, loading, fetchStats } = useDashboard();
+const themeStore = useThemeStore();
 
 fetchStats();
 
