@@ -15,5 +15,17 @@
       "activity_log": "Activity Log",
       "logout": "Logout"
     }
+  },
+
+  "dashboard": {
+    "value": "Dashboard",
+    "stat_card": {
+      "up_from_yesterday": "Up from yesterday",
+      "down_from_yesterday": "Down from yesterday",
+      "total_user": "Total User",
+      "total_order": "Total Order",
+      "total_sales": "Total Sales",
+      "total_pending": "Total Pending"
+    }
   }
 }

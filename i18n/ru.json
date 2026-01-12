@@ -15,5 +15,17 @@
       "activity_log": "Журнал активности",
       "logout": "Выйти"
     }
+  },
+
+  "dashboard": {
+    "value": "Дашборд",
+    "stat_card": {
+      "up_from_yesterday": "Выше, чем вчера",
+      "down_from_yesterday": "Ниже, чем вчера",
+      "total_user": "Всего пользователей",
+      "total_order": "Всего заказов",
+      "total_sales": "Общий объём продаж",
+      "total_pending": "Всего в ожидании"
+    }
   }
 }

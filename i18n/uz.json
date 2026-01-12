@@ -15,5 +15,17 @@
       "activity_log": "Faoliyatlar tarixi",
       "logout": "Chiqish"
     }
+  },
+
+  "dashboard": {
+    "value": "Boshqaruv paneli",
+    "stat_card": {
+      "up_from_yesterday": "Kechadan yuqori",
+      "down_from_yesterday": "Kechadan past",
+      "total_user": "Jami foydalanuvchilar",
+      "total_order": "Jami buyurtmalar",
+      "total_sales": "Umumiy savdo hajmi",
+      "total_pending": "Jami kutilayotgan"
+    }
   }
 }
