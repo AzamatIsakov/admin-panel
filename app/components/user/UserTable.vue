@@ -68,7 +68,7 @@
         </template>
 
         <!-- ACTION -->
-        <template v-else-if="column.key === 'action'">
+        <template v-if="column.key === 'action'">
           <div class="flex">
             <NuxtLink :to="`/users/${record.id}`">
               <button
@@ -77,8 +77,12 @@
                 <EditOutlined class="text-base" />
               </button>
             </NuxtLink>
+
+            <!-- Локализованный Popconfirm -->
             <a-popconfirm
-              title="Delete this user?"
+              :title="t('users.delete_confirm')"
+              :ok-text="t('common.yes')"
+              :cancel-text="t('common.cancel')"
               @confirm="$emit('delete', record.id)"
             >
               <button

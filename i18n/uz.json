@@ -50,6 +50,7 @@
     "value": "Mahsulotlar",
     "add_title": "Mahsulot qo'shish",
     "edit_title": "Mahsulotni tahrirlash",
+    "delete_confirm": "Ushbu mahsulot o'chirilsinmi?",
     "sections": {
       "general": "Asosiy ma'lumotlar",
       "pricing": "Narxlar",
@@ -87,6 +88,17 @@
       "cancel": "Bekor qilish",
       "save": "Saqlash",
       "update": "Yangilash"
+    },
+    "add_product": "Mahsulot qo'shish",
+    "search_placeholder": "Mahsulot qidirish...",
+    "columns": {
+      "image": "Rasm",
+      "name": "Mahsulot nomi",
+      "category": "Kategoriya",
+      "price": "Narx",
+      "stock": "Dona",
+      "colors": "Ranglar",
+      "action": "Amal"
     }
   },
 
@@ -111,6 +123,7 @@
   "users": {
     "title": "Foydalanuvchilar",
     "add_user": "Qo'shish",
+    "delete_confirm": "Ushbu foydalanuvchi o'chirilsinmi?",
     "columns": {
       "name": "Ism",
       "info": "Ma'lumot",
@@ -148,6 +161,13 @@
     "pagination": {
       "showing": "{total} dan {start}-{end} ko'rsatilmoqda",
       "rows": "Qatorlar:"
-    }
+    },
+    "table": {
+      "triggerDesc": "Kamayish bo'yicha saralash",
+      "triggerAsc": "O'sish bo'yicha saralash",
+      "cancelSort": "Saralashni bekor qilish"
+    },
+    "yes": "Xa",
+    "cancel": "Bekor qilish"
   }
 }

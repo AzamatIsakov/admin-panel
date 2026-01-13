@@ -50,6 +50,7 @@
     "value": "Товары",
     "add_title": "Добавить товар",
     "edit_title": "Редактировать товар",
+    "delete_confirm": "Удалить этот товар?",
     "sections": {
       "general": "Основная информация",
       "pricing": "Ценообразование",
@@ -87,6 +88,17 @@
       "cancel": "Отмена",
       "save": "Сохранить",
       "update": "Обновить"
+    },
+    "add_product": "Добавить товар",
+    "search_placeholder": "Поиск товара...",
+    "columns": {
+      "image": "Фото",
+      "name": "Название",
+      "category": "Категория",
+      "price": "Цена",
+      "stock": "Штук",
+      "colors": "Цвета",
+      "action": "Действие"
     }
   },
 
@@ -111,6 +123,7 @@
   "users": {
     "title": "Пользователи",
     "add_user": "Добавить",
+    "delete_confirm": "Удалить этого пользователя?",
     "columns": {
       "name": "Имя",
       "info": "Инфо",
@@ -148,6 +161,13 @@
     "pagination": {
       "showing": "Показано {start}-{end} из {total}",
       "rows": "Строк:"
-    }
+    },
+    "table": {
+      "triggerDesc": "Сортировать по убыванию",
+      "triggerAsc": "Сортировать по возрастанию",
+      "cancelSort": "Отменить сортировку"
+    },
+    "yes": "Да",
+    "cancel": "Отмена"
   }
 }

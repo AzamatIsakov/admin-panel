@@ -11,12 +11,18 @@
       </h2>
 
       <div class="flex gap-4 items-center">
-        <NuxtLink to="/products/create">Создать товар</NuxtLink>
+        <!-- Кнопка Создания (Стиль как на Users Page) -->
+        <NuxtLink to="/products/create">
+          <a-button type="primary" class="bg-blue-600">
+            {{ t("products.add_product") }}
+          </a-button>
+        </NuxtLink>
+
         <!-- Поиск -->
         <div class="relative w-full md:w-[400px]">
           <a-input
             v-model:value="searchQuery"
-            placeholder="Search product name"
+            :placeholder="t('products.search_placeholder')"
             class="custom-input rounded-full px-4 py-2 bg-white dark:bg-dark-primary border-gray-200 dark:border-gray-600"
             @press-enter="handleSearch"
           >
@@ -74,6 +80,7 @@ const handleSearch = () => {
   });
 };
 
+// SSR
 await fetchProducts({ page: 1 });
 </script>
 

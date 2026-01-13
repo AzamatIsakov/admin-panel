@@ -6,6 +6,7 @@
       :data-source="products"
       :loading="loading"
       :pagination="false"
+      :locale="tableLocale"
       row-key="id"
       class="custom-product-table rounded-[14px] shadow-sm !border !border-gray-100 dark:!border-gray-700 overflow-hidden"
       :scroll="{ x: 800 }"
@@ -46,7 +47,6 @@
         <!-- Available Color -->
         <template v-else-if="column.key === 'colors'">
           <div class="flex gap-4">
-            <!-- Генерируем рандомные цвета на основе ID для стабильности -->
             <div
               v-for="color in getFakeColors(record.id)"
               :key="color"
@@ -59,7 +59,6 @@
         <!-- Action Buttons -->
         <template v-else-if="column.key === 'action'">
           <div class="flex">
-            <!-- Edit Button -->
             <NuxtLink :to="`/products/${record.id}`">
               <button
                 class="-mr-px py-2 px-4 flex items-center justify-center rounded-l-lg border-r-0 bg-[#FAFBFD] dark:bg-gray-700 border border-[#D5D5D5] dark:border-gray-600 hover:bg-blue-50 transition-colors text-gray-500 dark:text-gray-300"
@@ -68,9 +67,10 @@
               </button>
             </NuxtLink>
 
-            <!-- Delete Button -->
             <a-popconfirm
-              title="Delete this product?"
+              :title="t('products.delete_confirm')"
+              :ok-text="t('common.yes')"
+              :cancel-text="t('common.cancel')"
               @confirm="$emit('delete', record.id)"
             >
               <button
@@ -84,19 +84,27 @@
       </template>
     </a-table>
 
-    <!-- Кастомный Футер -->
+    <!-- Кастомный Футер (Локализованный) -->
     <div
       class="py-4 flex flex-col md:flex-row justify-between items-center gap-4 px-2"
     >
-      <!-- Левая часть: Showing text + Per Page Select -->
       <div class="flex items-center gap-4">
         <div class="text-gray-500 dark:text-gray-400 text-sm font-medium">
-          Showing {{ showingStart }}-{{ showingEnd }} of {{ total }}
+          <!-- Локализация "Showing 1-10 of 200" -->
+          {{
+            t("common.pagination.showing", {
+              start: showingStart,
+              end: showingEnd,
+              total: total,
+            })
+          }}
         </div>
 
-        <!-- Выбор количества на страницу -->
         <div class="flex items-center gap-2">
-          <span class="text-xs text-gray-400">Rows:</span>
+          <!-- Локализация "Rows:" -->
+          <span class="text-xs text-gray-400">{{
+            t("common.pagination.rows")
+          }}</span>
           <a-select
             :value="pageSize"
             class="min-w-[70px]"
@@ -110,7 +118,7 @@
         </div>
       </div>
 
-      <!-- Правая часть: Пагинация -->
+      <!-- Пагинация -->
       <div
         class="flex items-center rounded border border-gray-200 dark:border-gray-600 overflow-hidden"
       >
@@ -152,8 +160,14 @@ const props = defineProps<{
   pageSize: number;
 }>();
 
-// Обновляем emit, чтобы он принимал объект с настройками
 const emit = defineEmits(["change", "delete"]);
+const { t } = useI18n(); // Подключаем i18n
+
+const tableLocale = computed(() => ({
+  triggerDesc: t("common.table.triggerDesc"),
+  triggerAsc: t("common.table.triggerAsc"),
+  cancelSort: t("common.table.cancelSort"),
+}));
 
 const showingStart = computed(() => {
   if (props.total === 0) return 0;
@@ -165,34 +179,38 @@ const showingEnd = computed(() => {
   return end > props.total ? props.total : end;
 });
 
-// Добавляем sorter: true для колонок, которые хотим сортировать
-const columns = [
-  { title: "Image", key: "thumbnail", width: 100 },
+// Computed columns для локализации
+const columns = computed(() => [
+  { title: t("products.columns.image"), key: "thumbnail", width: 100 },
   {
-    title: "Product Name",
+    title: t("products.columns.name"),
     dataIndex: "title",
     key: "title",
     sorter: true,
     width: 400,
   },
   {
-    title: "Category",
+    title: t("products.columns.category"),
     dataIndex: "category",
     key: "category",
     width: 350,
-    // Сюда можно добавить filters, если захотим фильтрацию
   },
   {
-    title: "Price",
+    title: t("products.columns.price"),
     dataIndex: "price",
     key: "price",
     sorter: true,
     width: 350,
   },
-  { title: "Piece", dataIndex: "stock", key: "stock", sorter: true },
-  { title: "Available Color", key: "colors" },
-  { title: "Action", key: "action", width: 120 },
-];
+  {
+    title: t("products.columns.stock"),
+    dataIndex: "stock",
+    key: "stock",
+    sorter: true,
+  },
+  { title: t("products.columns.colors"), key: "colors" },
+  { title: t("products.columns.action"), key: "action", width: 120 },
+]);
 
 const getFakeColors = (id: number) => {
   const colors = ["#000000", "#7E7E7E", "#F93C65", "#4880FF", "#FFB648"];
@@ -200,21 +218,18 @@ const getFakeColors = (id: number) => {
   return colors.slice(id % colors.length, (id % colors.length) + count);
 };
 
-// Обработчик смены размера страницы
 const handlePageSizeChange = (val: number | SelectValue) => {
-  // Сбрасываем на 1 страницу при смене размера
   emit("change", { page: 1, pageSize: val });
 };
 
 // Обработчик изменений таблицы (Сортировка)
-// Ant Design Table сам вызывает это событие при клике на заголовок
 const handleTableChange: TableProps["onChange"] = (
   pagination,
   filters,
   sorter: any
 ) => {
   const sortParams = {
-    sortBy: sorter.field, // 'price', 'title' и т.д.
+    sortBy: sorter.field,
     order:
       sorter.order === "ascend"
         ? "asc"
@@ -223,7 +238,6 @@ const handleTableChange: TableProps["onChange"] = (
         : undefined,
   };
 
-  // Эмитим изменения наверх
   emit("change", {
     page: props.current,
     pageSize: props.pageSize,
