@@ -74,7 +74,7 @@ const handleSearch = () => {
   });
 };
 
-fetchProducts({ page: 1 });
+await fetchProducts({ page: 1 });
 </script>
 
 <style>

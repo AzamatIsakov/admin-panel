@@ -112,7 +112,7 @@ const datasets = {
 // 3. Вычисляем текущие данные на основе выбора
 const currentChartData = computed(() => datasets[selectedPeriod.value]);
 
-fetchStats();
+await fetchStats();
 
 const dashboardItems = computed(() => [
   // Total User (Синий)

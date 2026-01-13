@@ -106,5 +106,48 @@
     "error_load": "Не удалось загрузить данные",
     "error_operation": "Операция не удалась",
     "error_api": "Ошибка API"
+  },
+
+  "users": {
+    "title": "Пользователи",
+    "add_user": "Добавить",
+    "columns": {
+      "name": "Имя",
+      "info": "Инфо",
+      "username": "Никнейм",
+      "phone": "Телефон",
+      "role": "Роль",
+      "status": "Статус",
+      "action": "Действие"
+    },
+    "filters": {
+      "search_placeholder": "Поиск пользователя...",
+      "role_placeholder": "Фильтр по Роли",
+      "gender_placeholder": "Фильтр по Полу",
+      "reset": "Сброс",
+      "roles": {
+        "admin": "Админ",
+        "moderator": "Модератор",
+        "user": "Пользователь"
+      },
+      "genders": {
+        "male": "Мужчина",
+        "female": "Женщина"
+      }
+    },
+
+    "messages": {
+      "deleted": "Пользователь успешно удален",
+      "status_active": "Пользователь активирован",
+      "status_inactive": "Пользователь деактивирован",
+      "failed": "Ошибка выполнения"
+    }
+  },
+
+  "common": {
+    "pagination": {
+      "showing": "Показано {start}-{end} из {total}",
+      "rows": "Строк:"
+    }
   }
 }

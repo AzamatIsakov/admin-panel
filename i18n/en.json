@@ -106,5 +106,48 @@
     "error_load": "Failed to load data",
     "error_operation": "Operation failed",
     "error_api": "API Error"
+  },
+
+  "users": {
+    "title": "Users",
+    "add_user": "Add User",
+    "columns": {
+      "name": "Name",
+      "info": "Info",
+      "username": "Username",
+      "phone": "Phone",
+      "role": "Role",
+      "status": "Status",
+      "action": "Action"
+    },
+    "filters": {
+      "search_placeholder": "Search user...",
+      "role_placeholder": "Filter by Role",
+      "gender_placeholder": "Filter by Gender",
+      "reset": "Reset",
+      "roles": {
+        "admin": "Admin",
+        "moderator": "Moderator",
+        "user": "User"
+      },
+      "genders": {
+        "male": "Male",
+        "female": "Female"
+      }
+    },
+
+    "messages": {
+      "deleted": "User deleted successfully",
+      "status_active": "User is now Active",
+      "status_inactive": "User is now Inactive",
+      "failed": "Action failed"
+    }
+  },
+
+  "common": {
+    "pagination": {
+      "showing": "Showing {start}-{end} of {total}",
+      "rows": "Rows:"
+    }
   }
 }

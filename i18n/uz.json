@@ -106,5 +106,48 @@
     "error_load": "Ma'lumotlarni yuklab bo'lmadi",
     "error_operation": "Jarayon amalga oshmadi",
     "error_api": "API xatosi"
+  },
+
+  "users": {
+    "title": "Foydalanuvchilar",
+    "add_user": "Qo'shish",
+    "columns": {
+      "name": "Ism",
+      "info": "Ma'lumot",
+      "username": "Foydalanuvchi nomi",
+      "phone": "Telefon",
+      "role": "Rol",
+      "status": "Holat",
+      "action": "Amal"
+    },
+    "filters": {
+      "search_placeholder": "Qidirish...",
+      "role_placeholder": "Rol bo'yicha",
+      "gender_placeholder": "Jins bo'yicha",
+      "reset": "Tozalash",
+      "roles": {
+        "admin": "Admin",
+        "moderator": "Moderator",
+        "user": "Foydalanuvchi"
+      },
+      "genders": {
+        "male": "Erkak",
+        "female": "Ayol"
+      }
+    },
+
+    "messages": {
+      "deleted": "Foydalanuvchi o'chirildi",
+      "status_active": "Foydalanuvchi faollashtirildi",
+      "status_inactive": "Foydalanuvchi faolsizlantirildi",
+      "failed": "Xatolik yuz berdi"
+    }
+  },
+
+  "common": {
+    "pagination": {
+      "showing": "{total} dan {start}-{end} ko'rsatilmoqda",
+      "rows": "Qatorlar:"
+    }
   }
 }
