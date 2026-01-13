@@ -7,34 +7,36 @@
     </h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- FirstName (Мин 3 символа) -->
       <a-form-item
         :label="t('users.fields.first_name')"
         name="firstName"
-        :rules="[{ required: true, message: t('validation.required') }]"
+        :rules="[rules.required(), rules.min(3)]"
       >
         <a-input v-model:value="formState.firstName" size="large" />
       </a-form-item>
 
+      <!-- LastName (Мин 3 символа) -->
       <a-form-item
         :label="t('users.fields.last_name')"
         name="lastName"
-        :rules="[{ required: true, message: t('validation.required') }]"
+        :rules="[rules.required(), rules.min(3)]"
       >
         <a-input v-model:value="formState.lastName" size="large" />
       </a-form-item>
 
+      <!-- Email -->
       <a-form-item
         :label="t('users.fields.email')"
         name="email"
-        :rules="[
-          { required: true, type: 'email', message: t('validation.required') },
-        ]"
+        :rules="[rules.required(), rules.email()]"
       >
         <a-input v-model:value="formState.email" size="large" />
       </a-form-item>
 
+      <!-- Phone (Кастомный компонент) -->
       <a-form-item :label="t('users.fields.phone')" name="phone">
-        <a-input v-model:value="formState.phone" size="large" />
+        <PhoneInput v-model:value="formState.phone" />
       </a-form-item>
 
       <a-form-item
@@ -83,9 +85,14 @@
 
 <script setup lang="ts">
 import type { UserFormState } from "~/types/user-form";
+import PhoneInput from "~/components/common/PhoneInput.vue";
+import { useFormRules } from "~/composables/useFormRules";
+
 interface Props {
   formState: UserFormState;
 }
 defineProps<Props>();
+
 const { t } = useI18n();
+const rules = useFormRules();
 </script>

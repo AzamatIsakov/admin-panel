@@ -27,10 +27,24 @@
 
       <a-form-item :label="t('users.fields.eye_color')" name="eyeColor">
         <a-select v-model:value="formState.eyeColor" size="large">
-          <a-select-option value="Green">Green</a-select-option>
-          <a-select-option value="Blue">Blue</a-select-option>
-          <a-select-option value="Brown">Brown</a-select-option>
-          <a-select-option value="Amber">Amber</a-select-option>
+          <a-select-option value="Green">{{
+            t("users.colors.green")
+          }}</a-select-option>
+          <a-select-option value="Blue">{{
+            t("users.colors.blue")
+          }}</a-select-option>
+          <a-select-option value="Brown">{{
+            t("users.colors.brown")
+          }}</a-select-option>
+          <a-select-option value="Amber">{{
+            t("users.colors.amber")
+          }}</a-select-option>
+          <a-select-option value="Gray">{{
+            t("users.colors.gray")
+          }}</a-select-option>
+          <a-select-option value="Hazel">{{
+            t("users.colors.hazel")
+          }}</a-select-option>
         </a-select>
       </a-form-item>
 

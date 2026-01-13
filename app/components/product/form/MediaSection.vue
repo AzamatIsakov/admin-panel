@@ -10,10 +10,7 @@
     <a-form-item
       :label="t('products.fields.thumbnail')"
       name="thumbnail"
-      :rules="[
-        { required: true, message: t('validation.required') },
-        { type: 'url', message: t('validation.url_invalid'), trigger: 'blur' },
-      ]"
+      :rules="[rules.required(), rules.url()]"
     >
       <a-input
         v-model:value="formState.thumbnail"
@@ -36,17 +33,12 @@
       <a-form-item
         :label="`${t('products.fields.images')} (1)`"
         :name="['images', 0]"
-        :rules="[
-          {
-            type: 'url',
-            message: t('validation.url_invalid'),
-            trigger: 'blur',
-          },
-        ]"
+        :rules="[rules.url()]"
       >
         <a-input
           v-model:value="formState.images[0]"
           placeholder="https://..."
+          :rules="[rules.url()]"
         />
       </a-form-item>
 
@@ -54,13 +46,7 @@
       <a-form-item
         :label="`${t('products.fields.images')} (2)`"
         :name="['images', 1]"
-        :rules="[
-          {
-            type: 'url',
-            message: t('validation.url_invalid'),
-            trigger: 'blur',
-          },
-        ]"
+        :rules="[rules.url()]"
       >
         <a-input
           v-model:value="formState.images[1]"
@@ -80,4 +66,5 @@ interface Props {
 }
 defineProps<Props>();
 const { t } = useI18n();
+const rules = useFormRules();
 </script>

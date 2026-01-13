@@ -9,14 +9,7 @@
     <a-form-item
       :label="t('products.fields.title')"
       name="title"
-      :rules="[
-        { required: true, message: t('validation.required') },
-        {
-          min: 3,
-          message: t('validation.min_length', { min: 3 }),
-          trigger: 'blur',
-        },
-      ]"
+      :rules="[rules.required(), rules.min(3)]"
     >
       <a-input
         v-model:value="formState.title"
@@ -28,7 +21,7 @@
     <a-form-item
       :label="t('products.fields.description')"
       name="description"
-      :rules="[{ required: true, message: t('validation.required') }]"
+      :rules="[rules.required()]"
     >
       <a-textarea
         v-model:value="formState.description"
@@ -59,4 +52,5 @@ interface Props {
 }
 defineProps<Props>();
 const { t } = useI18n();
+const rules = useFormRules();
 </script>

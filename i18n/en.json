@@ -27,6 +27,7 @@
       "total_sales": "Total Sales",
       "total_pending": "Total Pending"
     },
+
     "sales_chart": {
       "months": {
         "jan": "Jan",
@@ -43,6 +44,7 @@
         "dec": "Dec"
       }
     },
+
     "sales_details": "Sales Details"
   },
 
@@ -59,6 +61,7 @@
       "media": "Product Media",
       "organization": "Organization"
     },
+
     "fields": {
       "title": "Product Title",
       "description": "Description",
@@ -77,6 +80,7 @@
       "images": "Image URLs",
       "warranty": "Warranty Information"
     },
+
     "placeholders": {
       "title": "Type product name here...",
       "description": "Type product description here...",
@@ -84,11 +88,13 @@
       "enter_tag": "Type tag and press Enter",
       "warranty": "e.g. 1 year warranty"
     },
+
     "actions": {
       "cancel": "Cancel",
       "save": "Save Product",
       "update": "Update Product"
     },
+
     "add_product": "Add Product",
     "search_placeholder": "Search product name",
     "columns": {
@@ -108,7 +114,8 @@
     "url_invalid": "Please enter a valid URL (http/https)",
     "number_min": "Value cannot be less than {min}",
     "number_max": "Value cannot be greater than {max}",
-    "select_required": "Please select an option"
+    "select_required": "Please select an option",
+    "email_format": "Invalid email format"
   },
 
   "messages": {
@@ -133,6 +140,7 @@
       "status": "Status",
       "action": "Action"
     },
+
     "filters": {
       "search_placeholder": "Search user...",
       "role_placeholder": "Filter by Role",
@@ -143,6 +151,7 @@
         "moderator": "Moderator",
         "user": "User"
       },
+
       "genders": {
         "male": "Male",
         "female": "Female"
@@ -163,6 +172,7 @@
       "professional": "Professional & Bank",
       "account": "Account Status"
     },
+
     "fields": {
       "first_name": "First Name",
       "last_name": "Last Name",
@@ -187,8 +197,19 @@
       "role": "Role",
       "image_url": "Avatar URL"
     },
+
     "placeholders": {
       "select_date": "Select date"
+    },
+
+    "edit_title": "Edit User",
+    "colors": {
+      "green": "Green",
+      "blue": "Blue",
+      "brown": "Brown",
+      "amber": "Amber",
+      "gray": "Gray",
+      "hazel": "Hazel"
     }
   },
 
@@ -197,11 +218,13 @@
       "showing": "Showing {start}-{end} of {total}",
       "rows": "Rows:"
     },
+
     "table": {
       "triggerDesc": "Click to sort descending",
       "triggerAsc": "Click to sort ascending",
       "cancelSort": "Click to cancel sorting"
     },
+
     "yes": "Yes",
     "cancel": "Cancel"
   }

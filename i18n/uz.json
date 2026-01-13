@@ -27,6 +27,7 @@
       "total_sales": "Umumiy savdo hajmi",
       "total_pending": "Jami kutilayotgan"
     },
+
     "sales_chart": {
       "months": {
         "jan": "Yan",
@@ -43,6 +44,7 @@
         "dec": "Dek"
       }
     },
+
     "sales_details": "Savdo tafsilotlari"
   },
 
@@ -59,6 +61,7 @@
       "media": "Media fayllar",
       "organization": "Tashkilot"
     },
+
     "fields": {
       "title": "Mahsulot nomi",
       "description": "Tavsif",
@@ -77,6 +80,7 @@
       "images": "Rasm URLlari",
       "warranty": "Kafolat ma'lumotlari"
     },
+
     "placeholders": {
       "title": "Mahsulot nomini kiriting...",
       "description": "Tavsifni kiriting...",
@@ -84,11 +88,13 @@
       "enter_tag": "Teg kiriting va Enterni bosing",
       "warranty": "masalan, 1 yil kafolat"
     },
+
     "actions": {
       "cancel": "Bekor qilish",
       "save": "Saqlash",
       "update": "Yangilash"
     },
+
     "add_product": "Mahsulot qo'shish",
     "search_placeholder": "Mahsulot qidirish...",
     "columns": {
@@ -108,7 +114,8 @@
     "url_invalid": "Iltimos, to'g'ri URL kiriting (http/https)",
     "number_min": "Qiymat {min} dan kam bo'lmasligi kerak",
     "number_max": "Qiymat {max} dan ko'p bo'lmasligi kerak",
-    "select_required": "Iltimos, variantni tanlang"
+    "select_required": "Iltimos, variantni tanlang",
+    "email_format": "Email formati noto'g'ri"
   },
 
   "messages": {
@@ -133,6 +140,7 @@
       "status": "Holat",
       "action": "Amal"
     },
+
     "filters": {
       "search_placeholder": "Qidirish...",
       "role_placeholder": "Rol bo'yicha",
@@ -143,6 +151,7 @@
         "moderator": "Moderator",
         "user": "Foydalanuvchi"
       },
+
       "genders": {
         "male": "Erkak",
         "female": "Ayol"
@@ -163,6 +172,7 @@
       "professional": "Ish va Bank",
       "account": "Hisob holati"
     },
+
     "fields": {
       "first_name": "Ism",
       "last_name": "Familiya",
@@ -187,8 +197,19 @@
       "role": "Rol",
       "image_url": "Avatar URL"
     },
+
     "placeholders": {
       "select_date": "Sanani tanlang"
+    },
+
+    "edit_title": "Foydalanuvchini tahrirlash",
+    "colors": {
+      "green": "Yashil",
+      "blue": "Moviy",
+      "brown": "Jigarrang",
+      "amber": "Sariq",
+      "gray": "Kulrang",
+      "hazel": "Och jigarrang"
     }
   },
 
@@ -197,11 +218,13 @@
       "showing": "{total} dan {start}-{end} ko'rsatilmoqda",
       "rows": "Qatorlar:"
     },
+
     "table": {
       "triggerDesc": "Kamayish bo'yicha saralash",
       "triggerAsc": "O'sish bo'yicha saralash",
       "cancelSort": "Saralashni bekor qilish"
     },
+
     "yes": "Xa",
     "cancel": "Bekor qilish"
   }

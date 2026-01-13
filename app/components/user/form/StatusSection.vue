@@ -25,13 +25,17 @@
     <a-form-item
       :label="t('users.fields.username')"
       name="username"
-      :rules="[{ required: true, message: t('validation.required') }]"
+      :rules="[rules.required()]"
     >
       <a-input v-model:value="formState.username" size="large" />
     </a-form-item>
 
-    <!-- Avatar URL -->
-    <a-form-item :label="t('users.fields.image_url')" name="image">
+    <!-- Avatar URL с валидацией -->
+    <a-form-item
+      :label="t('users.fields.image_url')"
+      name="image"
+      :rules="[rules.url()]"
+    >
       <a-input
         v-model:value="formState.image"
         placeholder="https://..."
@@ -49,10 +53,12 @@
 </template>
 
 <script setup lang="ts">
+import { useFormRules } from "~/composables/useFormRules";
 import type { UserFormState } from "~/types/user-form";
 interface Props {
   formState: UserFormState;
 }
 defineProps<Props>();
 const { t } = useI18n();
+const rules = useFormRules();
 </script>

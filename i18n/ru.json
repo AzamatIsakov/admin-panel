@@ -27,6 +27,7 @@
       "total_sales": "Общий объём продаж",
       "total_pending": "Всего в ожидании"
     },
+
     "sales_chart": {
       "months": {
         "jan": "Янв",
@@ -43,6 +44,7 @@
         "dec": "Дек"
       }
     },
+
     "sales_details": "Детали продаж"
   },
 
@@ -59,6 +61,7 @@
       "media": "Медиафайлы",
       "organization": "Организация"
     },
+
     "fields": {
       "title": "Название товара",
       "description": "Описание",
@@ -77,6 +80,7 @@
       "images": "URL Изображений",
       "warranty": "Информация о гарантии"
     },
+
     "placeholders": {
       "title": "Введите название товара...",
       "description": "Введите описание...",
@@ -84,11 +88,13 @@
       "enter_tag": "Введите тег и нажмите Enter",
       "warranty": "например, 1 год гарантии"
     },
+
     "actions": {
       "cancel": "Отмена",
       "save": "Сохранить",
       "update": "Обновить"
     },
+
     "add_product": "Добавить товар",
     "search_placeholder": "Поиск товара...",
     "columns": {
@@ -108,7 +114,8 @@
     "url_invalid": "Введите корректный URL (http/https)",
     "number_min": "Значение не может быть меньше {min}",
     "number_max": "Значение не может быть больше {max}",
-    "select_required": "Пожалуйста, выберите вариант"
+    "select_required": "Пожалуйста, выберите вариант",
+    "email_format": "Неверный формат email"
   },
 
   "messages": {
@@ -133,6 +140,7 @@
       "status": "Статус",
       "action": "Действие"
     },
+
     "filters": {
       "search_placeholder": "Поиск пользователя...",
       "role_placeholder": "Фильтр по Роли",
@@ -143,6 +151,7 @@
         "moderator": "Модератор",
         "user": "Пользователь"
       },
+
       "genders": {
         "male": "Мужчина",
         "female": "Женщина"
@@ -163,6 +172,7 @@
       "professional": "Работа и Банк",
       "account": "Статус аккаунта"
     },
+
     "fields": {
       "first_name": "Имя",
       "last_name": "Фамилия",
@@ -187,8 +197,19 @@
       "role": "Роль",
       "image_url": "URL Аватара"
     },
+
     "placeholders": {
       "select_date": "Выберите дату"
+    },
+
+    "edit_title": "Редактировать пользователя",
+    "colors": {
+      "green": "Зеленые",
+      "blue": "Голубые",
+      "brown": "Карие",
+      "amber": "Янтарные",
+      "gray": "Серые",
+      "hazel": "Ореховые"
     }
   },
 
@@ -197,11 +218,13 @@
       "showing": "Показано {start}-{end} из {total}",
       "rows": "Строк:"
     },
+
     "table": {
       "triggerDesc": "Сортировать по убыванию",
       "triggerAsc": "Сортировать по возрастанию",
       "cancelSort": "Отменить сортировку"
     },
+
     "yes": "Да",
     "cancel": "Отмена"
   }
