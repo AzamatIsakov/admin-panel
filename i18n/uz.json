@@ -44,5 +44,65 @@
       }
     },
     "sales_details": "Savdo tafsilotlari"
+  },
+
+  "products": {
+    "value": "Mahsulotlar",
+    "add_title": "Mahsulot qo'shish",
+    "edit_title": "Mahsulotni tahrirlash",
+    "sections": {
+      "general": "Asosiy ma'lumotlar",
+      "pricing": "Narxlar",
+      "inventory": "Inventar",
+      "shipping": "Yetkazib berish va o'lchamlar",
+      "media": "Media fayllar",
+      "organization": "Tashkilot"
+    },
+    "fields": {
+      "title": "Mahsulot nomi",
+      "description": "Tavsif",
+      "price": "Asosiy narx",
+      "discount": "Chegirma (%)",
+      "stock": "Ombordagi miqdor",
+      "sku": "Artikul (SKU)",
+      "brand": "Brend",
+      "category": "Kategoriya",
+      "weight": "Og'irlik (kg)",
+      "width": "Kengligi",
+      "height": "Balandligi",
+      "depth": "Chuqurligi",
+      "tags": "Teglar",
+      "thumbnail": "Miniatyura URL",
+      "images": "Rasm URLlari",
+      "warranty": "Kafolat ma'lumotlari"
+    },
+    "placeholders": {
+      "title": "Mahsulot nomini kiriting...",
+      "description": "Tavsifni kiriting...",
+      "select_category": "Kategoriyani tanlang",
+      "enter_tag": "Teg kiriting va Enterni bosing",
+      "warranty": "masalan, 1 yil kafolat"
+    },
+    "actions": {
+      "cancel": "Bekor qilish",
+      "save": "Saqlash",
+      "update": "Yangilash"
+    }
+  },
+
+  "validation": {
+    "required": "Ushbu maydon to'ldirilishi shart",
+    "number_min": "Qiymat {min} dan katta yoki teng bo'lishi kerak",
+    "url_invalid": "Iltimos, to'g'ri URL kiriting",
+    "select_required": "Iltimos, variantni tanlang"
+  },
+
+  "messages": {
+    "success_create": "Mahsulot muvaffaqiyatli yaratildi",
+    "success_update": "Mahsulot muvaffaqiyatli yangilandi",
+    "success_delete": "Mahsulot muvaffaqiyatli o'chirildi",
+    "error_load": "Ma'lumotlarni yuklab bo'lmadi",
+    "error_operation": "Jarayon amalga oshmadi",
+    "error_api": "API xatosi"
   }
 }

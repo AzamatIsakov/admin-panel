@@ -1,7 +1,7 @@
 {
   "menu": {
     "dashboard": "Дашборд",
-    "products": "Продукты",
+    "products": "Товары",
     "users": "Пользователи",
     "settings": "Настройки",
     "logout": "Выйти"
@@ -44,5 +44,65 @@
       }
     },
     "sales_details": "Детали продаж"
+  },
+
+  "products": {
+    "value": "Товары",
+    "add_title": "Добавить товар",
+    "edit_title": "Редактировать товар",
+    "sections": {
+      "general": "Основная информация",
+      "pricing": "Ценообразование",
+      "inventory": "Инвентарь",
+      "shipping": "Доставка и размеры",
+      "media": "Медиафайлы",
+      "organization": "Организация"
+    },
+    "fields": {
+      "title": "Название товара",
+      "description": "Описание",
+      "price": "Базовая цена",
+      "discount": "Скидка (%)",
+      "stock": "Количество на складе",
+      "sku": "Артикул (SKU)",
+      "brand": "Бренд",
+      "category": "Категория",
+      "weight": "Вес (кг)",
+      "width": "Ширина",
+      "height": "Высота",
+      "depth": "Глубина",
+      "tags": "Теги",
+      "thumbnail": "URL Миниатюры",
+      "images": "URL Изображений",
+      "warranty": "Информация о гарантии"
+    },
+    "placeholders": {
+      "title": "Введите название товара...",
+      "description": "Введите описание...",
+      "select_category": "Выберите категорию",
+      "enter_tag": "Введите тег и нажмите Enter",
+      "warranty": "например, 1 год гарантии"
+    },
+    "actions": {
+      "cancel": "Отмена",
+      "save": "Сохранить",
+      "update": "Обновить"
+    }
+  },
+
+  "validation": {
+    "required": "Это поле обязательно",
+    "number_min": "Значение должно быть больше или равно {min}",
+    "url_invalid": "Введите корректный URL",
+    "select_required": "Пожалуйста, выберите вариант"
+  },
+
+  "messages": {
+    "success_create": "Товар успешно создан",
+    "success_update": "Товар успешно обновлен",
+    "success_delete": "Товар успешно удален",
+    "error_load": "Не удалось загрузить данные",
+    "error_operation": "Операция не удалась",
+    "error_api": "Ошибка API"
   }
 }

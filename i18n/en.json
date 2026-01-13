@@ -44,5 +44,65 @@
       }
     },
     "sales_details": "Sales Details"
+  },
+
+  "products": {
+    "value": "Products",
+    "add_title": "Add Product",
+    "edit_title": "Edit Product",
+    "sections": {
+      "general": "General Information",
+      "pricing": "Pricing",
+      "inventory": "Inventory",
+      "shipping": "Shipping & Delivery",
+      "media": "Product Media",
+      "organization": "Organization"
+    },
+    "fields": {
+      "title": "Product Title",
+      "description": "Description",
+      "price": "Base Price",
+      "discount": "Discount (%)",
+      "stock": "Stock Quantity",
+      "sku": "SKU",
+      "brand": "Brand",
+      "category": "Category",
+      "weight": "Weight (kg)",
+      "width": "Width",
+      "height": "Height",
+      "depth": "Depth",
+      "tags": "Tags",
+      "thumbnail": "Thumbnail URL",
+      "images": "Image URLs",
+      "warranty": "Warranty Information"
+    },
+    "placeholders": {
+      "title": "Type product name here...",
+      "description": "Type product description here...",
+      "select_category": "Select Category",
+      "enter_tag": "Type tag and press Enter",
+      "warranty": "e.g. 1 year warranty"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save Product",
+      "update": "Update Product"
+    }
+  },
+
+  "validation": {
+    "required": "This field is required",
+    "number_min": "Value must be greater than or equal to {min}",
+    "url_invalid": "Please enter a valid URL",
+    "select_required": "Please select an option"
+  },
+
+  "messages": {
+    "success_create": "Product created successfully",
+    "success_update": "Product updated successfully",
+    "success_delete": "Product deleted successfully",
+    "error_load": "Failed to load data",
+    "error_operation": "Operation failed",
+    "error_api": "API Error"
   }
 }

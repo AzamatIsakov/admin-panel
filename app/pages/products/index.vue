@@ -10,18 +10,21 @@
         {{ t("menu.products") }}
       </h2>
 
-      <!-- Поиск -->
-      <div class="relative w-full md:w-[400px]">
-        <a-input
-          v-model:value="searchQuery"
-          placeholder="Search product name"
-          class="custom-input rounded-full px-4 py-2 bg-white dark:bg-dark-primary border-gray-200 dark:border-gray-600"
-          @press-enter="handleSearch"
-        >
-          <template #prefix>
-            <SearchOutlined class="text-gray-400 mr-2" />
-          </template>
-        </a-input>
+      <div class="flex gap-4 items-center">
+        <NuxtLink to="/products/create">Создать товар</NuxtLink>
+        <!-- Поиск -->
+        <div class="relative w-full md:w-[400px]">
+          <a-input
+            v-model:value="searchQuery"
+            placeholder="Search product name"
+            class="custom-input rounded-full px-4 py-2 bg-white dark:bg-dark-primary border-gray-200 dark:border-gray-600"
+            @press-enter="handleSearch"
+          >
+            <template #prefix>
+              <SearchOutlined class="text-gray-400 mr-2" />
+            </template>
+          </a-input>
+        </div>
       </div>
     </div>
 

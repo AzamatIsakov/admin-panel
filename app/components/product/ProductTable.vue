@@ -173,6 +173,7 @@ const columns = [
     dataIndex: "title",
     key: "title",
     sorter: true, // Включаем сортировку
+    width: 400,
   },
   {
     title: "Category",
