@@ -16,7 +16,7 @@
           v-model:value="searchQuery"
           placeholder="Search product name"
           class="custom-input rounded-full px-4 py-2 bg-white dark:bg-dark-primary border-gray-200 dark:border-gray-600"
-          @pressEnter="handleSearch"
+          @press-enter="handleSearch"
         >
           <template #prefix>
             <SearchOutlined class="text-gray-400 mr-2" />
@@ -32,7 +32,7 @@
       :total="total"
       :current="pagination.current"
       :page-size="pagination.pageSize"
-      @change="handlePageChange"
+      @change="handleTableUpdate"
       @delete="deleteProduct"
     />
   </div>
@@ -42,17 +42,24 @@
 import { SearchOutlined } from "@ant-design/icons-vue";
 
 const { t } = useI18n();
-// Используем наш исправленный useProducts
 const { products, total, loading, pagination, fetchProducts, deleteProduct } =
   useProducts();
 
 const searchQuery = ref("");
 
-// Функция смены страницы (приходит из кнопок < > в таблице)
-const handlePageChange = (newPage: number) => {
+// Единый обработчик всех изменений (страница, размер, сортировка)
+const handleTableUpdate = (params: {
+  page?: number;
+  pageSize?: number;
+  sortBy?: string;
+  order?: "asc" | "desc";
+}) => {
   fetchProducts({
-    page: newPage,
+    page: params.page ?? pagination.current,
+    pageSize: params.pageSize ?? pagination.pageSize,
     search: searchQuery.value,
+    sortBy: params.sortBy,
+    order: params.order,
   });
 };
 

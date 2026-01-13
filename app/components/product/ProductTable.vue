@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Сама таблица -->
+    <!-- Таблица -->
     <a-table
       :columns="columns"
       :data-source="products"
@@ -9,6 +9,7 @@
       row-key="id"
       class="custom-product-table rounded-[14px] shadow-sm !border !border-gray-100 dark:!border-gray-700 overflow-hidden"
       :scroll="{ x: 800 }"
+      @change="handleTableChange"
     >
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'thumbnail'">
@@ -83,30 +84,47 @@
       </template>
     </a-table>
 
-    <!-- Кастомный Футер Пагинации -->
+    <!-- Кастомный Футер -->
     <div
-      class="py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      class="py-4 flex flex-col md:flex-row justify-between items-center gap-4 px-2"
     >
-      <!-- Текст слева -->
-      <div class="text-gray-500 dark:text-gray-400 text-sm font-medium">
-        Showing {{ showingStart }}-{{ showingEnd }} of {{ total }}
+      <!-- Левая часть: Showing text + Per Page Select -->
+      <div class="flex items-center gap-4">
+        <div class="text-gray-500 dark:text-gray-400 text-sm font-medium">
+          Showing {{ showingStart }}-{{ showingEnd }} of {{ total }}
+        </div>
+
+        <!-- Выбор количества на страницу -->
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-gray-400">Rows:</span>
+          <a-select
+            :value="pageSize"
+            class="min-w-[70px]"
+            size="small"
+            @change="handlePageSizeChange"
+          >
+            <a-select-option :value="9">9</a-select-option>
+            <a-select-option :value="20">20</a-select-option>
+            <a-select-option :value="50">50</a-select-option>
+          </a-select>
+        </div>
       </div>
 
-      <!-- Кнопки справа -->
+      <!-- Правая часть: Пагинация -->
       <div
         class="flex items-center rounded border border-gray-200 dark:border-gray-600 overflow-hidden"
       >
         <button
           class="px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 border-r border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 transition"
           :disabled="current <= 1"
-          @click="$emit('change', current - 1)"
+          @click="$emit('change', { page: current - 1, pageSize })"
         >
           <LeftOutlined />
         </button>
         <button
           class="px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 text-gray-500 dark:text-gray-300 transition"
           :disabled="showingEnd >= total"
-          @click="$emit('change', current + 1)"
+          @click="$emit('change', { page: current + 1, pageSize })"
         >
           <RightOutlined />
         </button>
@@ -123,6 +141,8 @@ import {
   RightOutlined,
 } from "@ant-design/icons-vue";
 import type { Product } from "~/types/product";
+import type { TableProps } from "ant-design-vue";
+import type { SelectValue } from "ant-design-vue/es/select";
 
 const props = defineProps<{
   products: Product[];
@@ -132,9 +152,9 @@ const props = defineProps<{
   pageSize: number;
 }>();
 
+// Обновляем emit, чтобы он принимал объект с настройками
 const emit = defineEmits(["change", "delete"]);
 
-// Расчет текста "Showing 1-9"
 const showingStart = computed(() => {
   if (props.total === 0) return 0;
   return (props.current - 1) * props.pageSize + 1;
@@ -145,23 +165,67 @@ const showingEnd = computed(() => {
   return end > props.total ? props.total : end;
 });
 
-// Колонки таблицы
+// Добавляем sorter: true для колонок, которые хотим сортировать
 const columns = [
   { title: "Image", key: "thumbnail", width: 100 },
-  { title: "Product Name", dataIndex: "title", key: "title" },
-  { title: "Category", dataIndex: "category", key: "category" },
-  { title: "Price", dataIndex: "price", key: "price" },
-  { title: "Piece", dataIndex: "stock", key: "stock" }, // Piece в дизайне, stock в API
+  {
+    title: "Product Name",
+    dataIndex: "title",
+    key: "title",
+    sorter: true, // Включаем сортировку
+  },
+  {
+    title: "Category",
+    dataIndex: "category",
+    key: "category",
+    // Сюда можно добавить filters, если захотим фильтрацию
+  },
+  {
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
+    sorter: true, // Включаем сортировку
+  },
+  { title: "Piece", dataIndex: "stock", key: "stock", sorter: true },
   { title: "Available Color", key: "colors" },
   { title: "Action", key: "action", width: 120 },
 ];
 
-// Хелпер для фейковых цветов (чтобы было красиво как на макете)
 const getFakeColors = (id: number) => {
   const colors = ["#000000", "#7E7E7E", "#F93C65", "#4880FF", "#FFB648"];
-  // Просто берем разные цвета в зависимости от ID
-  const count = (id % 3) + 1; // 1-3 цвета
+  const count = (id % 3) + 1;
   return colors.slice(id % colors.length, (id % colors.length) + count);
+};
+
+// Обработчик смены размера страницы
+const handlePageSizeChange = (val: number | SelectValue) => {
+  // Сбрасываем на 1 страницу при смене размера
+  emit("change", { page: 1, pageSize: val });
+};
+
+// Обработчик изменений таблицы (Сортировка)
+// Ant Design Table сам вызывает это событие при клике на заголовок
+const handleTableChange: TableProps["onChange"] = (
+  pagination,
+  filters,
+  sorter: any
+) => {
+  const sortParams = {
+    sortBy: sorter.field, // 'price', 'title' и т.д.
+    order:
+      sorter.order === "ascend"
+        ? "asc"
+        : sorter.order === "descend"
+        ? "desc"
+        : undefined,
+  };
+
+  // Эмитим изменения наверх
+  emit("change", {
+    page: props.current,
+    pageSize: props.pageSize,
+    ...sortParams,
+  });
 };
 </script>
 

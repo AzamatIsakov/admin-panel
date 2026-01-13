@@ -1,4 +1,3 @@
-// composables/useProducts.ts
 import type { Product, ProductResponse } from "~/types/product";
 
 export const useProducts = () => {
@@ -6,14 +5,17 @@ export const useProducts = () => {
   const total = ref(0);
   const loading = ref(false);
 
-  // Состояние таблицы (для страницы продуктов)
   const pagination = reactive({
     current: 1,
-    pageSize: 9, // На скрине видно "Showing 1-09", значит по 9 элементов
+    pageSize: 9, // Дефолт как на макете
   });
 
-  // Аргумент params сделаем гибким.
-  // Он может принимать пагинацию (page, pageSize) ИЛИ прямые параметры API (limit, skip)
+  // Новые состояния для сортировки
+  const sortState = reactive({
+    sortBy: "", // например 'price'
+    order: "", // 'asc' или 'desc'
+  });
+
   const fetchProducts = async (
     params: {
       page?: number;
@@ -21,38 +23,43 @@ export const useProducts = () => {
       search?: string;
       limit?: number; // Для совместимости с Dashboard
       skip?: number; // Для совместимости с Dashboard
+      sortBy?: string;
+      order?: "asc" | "desc";
     } = {}
   ) => {
     loading.value = true;
 
-    // Логика: Если передали page/pageSize, считаем skip/limit.
-    // Если передали limit напрямую (как в dashboard), используем его.
+    // 1. Обновляем локальный стейт
+    pagination.current = params.page || 1;
+    pagination.pageSize = params.pageSize || 9;
+    sortState.sortBy = params.sortBy || "";
+    sortState.order = params.order || "";
 
-    let limit = params.limit ?? pagination.pageSize;
-    let skip = params.skip ?? 0;
-
-    if (params.page) {
-      pagination.current = params.page;
-      skip = (params.page - 1) * limit;
-    }
-
-    if (params.pageSize) {
-      pagination.pageSize = params.pageSize;
-      limit = params.pageSize;
-    }
-
+    const limit = pagination.pageSize;
+    const skip = (pagination.current - 1) * limit;
     const q = params.search || "";
 
     try {
-      const url = q ? "/products/search" : "/products";
+      // DummyJSON Search не поддерживает сортировку одновременно (ограничение API).
+      // Поэтому логика такая: Если есть поиск -> используем /search (без сортировки).
+      // Если поиска нет -> используем /products (с сортировкой).
+
+      let url = "/products";
+      const queryParams: any = { limit, skip };
+
+      if (q) {
+        url = "/products/search";
+        queryParams.q = q;
+      } else {
+        // Добавляем параметры сортировки только если нет поиска
+        if (sortState.sortBy && sortState.order) {
+          queryParams.sortBy = sortState.sortBy;
+          queryParams.order = sortState.order;
+        }
+      }
 
       const { data } = await useApi<ProductResponse>(url, {
-        params: {
-          limit,
-          skip,
-          q,
-          // select: 'title,price,category...' // Можно оптимизировать, но пока берем всё
-        },
+        params: queryParams,
       });
 
       if (data.value) {
@@ -82,6 +89,7 @@ export const useProducts = () => {
     total,
     loading,
     pagination,
+    sortState,
     fetchProducts,
     deleteProduct,
   };
