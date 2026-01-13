@@ -141,7 +141,7 @@ const resetFilters = () => {
   fetchUsers({ page: 1 });
 };
 
-await fetchUsers({ page: 1 });
+fetchUsers({ page: 1 });
 </script>
 
 <style>

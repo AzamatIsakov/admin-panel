@@ -154,6 +154,41 @@
       "status_active": "User is now Active",
       "status_inactive": "User is now Inactive",
       "failed": "Action failed"
+    },
+
+    "sections": {
+      "personal": "Personal Information",
+      "address": "Address",
+      "physical": "Physical Attributes",
+      "professional": "Professional & Bank",
+      "account": "Account Status"
+    },
+    "fields": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "maiden_name": "Maiden Name",
+      "age": "Age",
+      "gender": "Gender",
+      "email": "Email",
+      "phone": "Phone",
+      "username": "Username",
+      "birth_date": "Birth Date",
+      "street": "Address / Street",
+      "city": "City",
+      "state": "State",
+      "zip": "Postal Code",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "eye_color": "Eye Color",
+      "blood_group": "Blood Group",
+      "university": "University",
+      "company_name": "Company Name",
+      "job_title": "Job Title",
+      "role": "Role",
+      "image_url": "Avatar URL"
+    },
+    "placeholders": {
+      "select_date": "Select date"
     }
   },
 

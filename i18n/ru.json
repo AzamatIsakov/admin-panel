@@ -154,6 +154,41 @@
       "status_active": "Пользователь активирован",
       "status_inactive": "Пользователь деактивирован",
       "failed": "Ошибка выполнения"
+    },
+
+    "sections": {
+      "personal": "Личные данные",
+      "address": "Адрес",
+      "physical": "Физические данные",
+      "professional": "Работа и Банк",
+      "account": "Статус аккаунта"
+    },
+    "fields": {
+      "first_name": "Имя",
+      "last_name": "Фамилия",
+      "maiden_name": "Девичья фамилия",
+      "age": "Возраст",
+      "gender": "Пол",
+      "email": "Email",
+      "phone": "Телефон",
+      "username": "Никнейм",
+      "birth_date": "Дата рождения",
+      "street": "Улица",
+      "city": "Город",
+      "state": "Штат/Область",
+      "zip": "Почтовый индекс",
+      "height": "Рост (см)",
+      "weight": "Вес (кг)",
+      "eye_color": "Цвет глаз",
+      "blood_group": "Группа крови",
+      "university": "Университет",
+      "company_name": "Компания",
+      "job_title": "Должность",
+      "role": "Роль",
+      "image_url": "URL Аватара"
+    },
+    "placeholders": {
+      "select_date": "Выберите дату"
     }
   },
 

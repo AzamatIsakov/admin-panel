@@ -154,6 +154,41 @@
       "status_active": "Foydalanuvchi faollashtirildi",
       "status_inactive": "Foydalanuvchi faolsizlantirildi",
       "failed": "Xatolik yuz berdi"
+    },
+
+    "sections": {
+      "personal": "Shaxsiy ma'lumotlar",
+      "address": "Manzil",
+      "physical": "Jismoniy xususiyatlar",
+      "professional": "Ish va Bank",
+      "account": "Hisob holati"
+    },
+    "fields": {
+      "first_name": "Ism",
+      "last_name": "Familiya",
+      "maiden_name": "Qizlik familiyasi",
+      "age": "Yosh",
+      "gender": "Jins",
+      "email": "Elektron pochta",
+      "phone": "Telefon",
+      "username": "Foydalanuvchi nomi",
+      "birth_date": "Tug'ilgan sana",
+      "street": "Ko'cha",
+      "city": "Shahar",
+      "state": "Viloyat/Shtat",
+      "zip": "Pochta indeksi",
+      "height": "Bo'yi (sm)",
+      "weight": "Vazni (kg)",
+      "eye_color": "Ko'z rangi",
+      "blood_group": "Qon guruhi",
+      "university": "Universitet",
+      "company_name": "Kompaniya",
+      "job_title": "Lavozim",
+      "role": "Rol",
+      "image_url": "Avatar URL"
+    },
+    "placeholders": {
+      "select_date": "Sanani tanlang"
     }
   },
 

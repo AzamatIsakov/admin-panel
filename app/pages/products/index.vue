@@ -80,8 +80,7 @@ const handleSearch = () => {
   });
 };
 
-// SSR
-await fetchProducts({ page: 1 });
+fetchProducts({ page: 1 });
 </script>
 
 <style>
