@@ -17,7 +17,6 @@
         {{ selectedLanguage.label }}
         <LucideChevronDown class="size-5 text-gray-400" />
       </span>
-      <!-- <DownOutlined class="text-lg text-gray-400" /> -->
     </div>
 
     <template #overlay>

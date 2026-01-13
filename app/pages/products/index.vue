@@ -2,7 +2,7 @@
   <div>
     <!-- Хедер страницы: Заголовок + Поиск -->
     <div
-      class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4"
+      class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4"
     >
       <h2
         class="text-[32px] font-bold text-[#202224] dark:text-white tracking-tight"
@@ -11,7 +11,7 @@
       </h2>
 
       <div class="flex gap-4 items-center">
-        <!-- Кнопка Создания (Стиль как на Users Page) -->
+        <!-- Кнопка Создания -->
         <NuxtLink to="/products/create">
           <a-button type="primary" class="bg-blue-600">
             {{ t("products.add_product") }}
@@ -32,6 +32,10 @@
           </a-input>
         </div>
       </div>
+    </div>
+
+    <div class="mb-6">
+      <CommonAppBreadcrumb :items="[{ label: t('products.value') }]" />
     </div>
 
     <!-- Таблица -->

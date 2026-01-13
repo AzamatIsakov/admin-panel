@@ -51,7 +51,6 @@ const props = defineProps<Props>();
 
 const { t } = useI18n();
 
-// Используем наш новый хук
 const { categories, loading, fetchCategories } = useCategories();
 
 const tagsOptions = computed(() => {

@@ -46,7 +46,7 @@ const handleInput = (e: Event) => {
 
     emit("update:value", formatted);
   } else {
-    // Если другая страна - просто возвращаем очищенное значение (или rawValue, если хотим разрешить скобки)
+    // Если другая страна - просто возвращаем очищенное значение
     // Для свободы оставим rawValue
     emit("update:value", rawValue);
   }

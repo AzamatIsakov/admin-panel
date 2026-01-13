@@ -19,7 +19,7 @@
       />
     </div>
 
-    <!-- Правая часть: Скрываем на мобилках (hidden lg:flex) -->
+    <!-- Правая часть: Скрываем на мобилках -->
     <div v-if="uiStore.isDesktop" class="flex items-center gap-[26px]">
       <HeaderThemeToggle />
       <HeaderNotificationBell />
@@ -27,7 +27,7 @@
       <HeaderUserDropdown />
     </div>
 
-    <!-- Для мобилки можно оставить только колокольчик, если хочется -->
+    <!-- Для мобилки можно оставить только колокольчик -->
     <div class="lg:hidden flex items-center">
       <HeaderNotificationBell />
     </div>

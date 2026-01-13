@@ -66,7 +66,7 @@ export const useAuthStore = defineStore(
     };
   },
   {
-    // Настройка Persist (сохранение в localStorage)
+    // Настройка Persist (сохранение)
     persist: {
       // Сохраняем только нужные поля
       pick: ["token", "refreshToken", "user"],

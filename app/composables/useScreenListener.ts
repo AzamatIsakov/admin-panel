@@ -5,7 +5,6 @@ export const useScreenListener = () => {
   let timeoutId: any = null;
 
   const handleResize = () => {
-    // Обновляем стейт мгновенно для плавности UI
     uiStore.width = window.innerWidth;
     uiStore.height = window.innerHeight;
 
@@ -17,11 +16,11 @@ export const useScreenListener = () => {
   };
 
   onMounted(() => {
-    // 1. Сразу при загрузке обновляем актуальные размеры
+    // Сразу при загрузке обновляем актуальные размеры
     // (вдруг пользователь повернул экран или кука устарела)
     uiStore.updateDimensions();
 
-    // 2. Слушаем изменение размера
+    // Слушаем изменение размера
     window.addEventListener("resize", handleResize);
   });
 

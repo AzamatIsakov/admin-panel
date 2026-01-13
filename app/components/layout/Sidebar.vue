@@ -7,7 +7,6 @@
     collapsible
     class="!bg-white dark:!bg-dark-primary !transition-all !duration-300 shadow-sm z-20"
   >
-    <!-- Переиспользуем контент, режим Desktop -->
     <LayoutSidebarContent
       :collapsed="collapsed"
       :is-mobile="false"
@@ -17,6 +16,10 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ collapsed: boolean }>();
+interface Props {
+  collapsed: boolean;
+}
+
+defineProps<Props>();
 defineEmits(["toggleSidebar"]);
 </script>

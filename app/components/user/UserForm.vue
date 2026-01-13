@@ -41,11 +41,12 @@
 </template>
 
 <script setup lang="ts">
+import dayjs from "dayjs";
 import type { UserFormState } from "~/types/user-form";
 
 interface Props {
   userId?: string | string[];
-} // Можно переименовать в userId для семантики
+}
 const props = defineProps<Props>();
 
 const { t } = useI18n();
@@ -90,18 +91,18 @@ if (isEditMode.value) {
     if (data.value) {
       Object.assign(formState, {
         ...data.value,
-        // Убедимся, что вложенные объекты не undefined или null
+
+        birthDate: data.value.birthDate
+          ? dayjs(data.value.birthDate).format("YYYY-MM-DD")
+          : undefined,
+
         address: data.value.address || {
           address: "",
           city: "",
           state: "",
           postalCode: "",
         },
-        company: data.value.company || {
-          name: "",
-          title: "",
-          department: "",
-        },
+        company: data.value.company || { name: "", title: "", department: "" },
       });
     }
   } catch (e) {

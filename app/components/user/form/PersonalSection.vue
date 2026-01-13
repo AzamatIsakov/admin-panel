@@ -34,7 +34,7 @@
         <a-input v-model:value="formState.email" size="large" />
       </a-form-item>
 
-      <!-- Phone (Кастомный компонент) -->
+      <!-- Phone -->
       <a-form-item :label="t('users.fields.phone')" name="phone">
         <PhoneInput v-model:value="formState.phone" />
       </a-form-item>

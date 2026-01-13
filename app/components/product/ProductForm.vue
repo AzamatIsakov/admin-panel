@@ -73,7 +73,6 @@ const formState = reactive<ProductFormState>({
 });
 
 // Если есть ID, загружаем данные продукта
-
 if (isEditMode.value) {
   loading.value = true;
   try {

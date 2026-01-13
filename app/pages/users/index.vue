@@ -15,6 +15,8 @@
         </NuxtLink>
       </div>
 
+      <CommonAppBreadcrumb :items="[{ label: t('users.title') }]" />
+
       <!-- Фильтры -->
       <div
         class="flex flex-col md:flex-row gap-4 bg-white dark:bg-dark-primary p-4 rounded-[14px] shadow-sm border border-gray-100 dark:border-gray-700"

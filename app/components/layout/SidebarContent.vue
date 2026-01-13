@@ -2,7 +2,7 @@
   <div
     class="flex flex-col h-full bg-white dark:bg-dark-primary transition-colors duration-300"
   >
-    <!-- 1. Логотип (Виден всегда) -->
+    <!-- Логотип (Виден всегда) -->
     <div class="h-[70px] flex items-center justify-center shrink-0 mx-4">
       <h1 class="dark:text-white">
         <NuxtLink
@@ -21,7 +21,7 @@
       </h1>
     </div>
 
-    <!-- 2. Блок профиля (ТОЛЬКО ДЛЯ МОБИЛОК) -->
+    <!-- Блок профиля (ТОЛЬКО ДЛЯ МОБИЛОК) -->
     <div
       v-if="isMobile"
       class="mb-2 px-6 py-4 flex flex-col gap-4 border-b border-gray-100 dark:border-gray-700"
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <!-- 3. Основное Меню -->
+    <!-- Основное Меню -->
     <div class="flex flex-col justify-between flex-1 overflow-y-auto py-2">
       <a-menu
         v-model:selectedKeys="state.selectedKeys"
@@ -59,7 +59,7 @@
         @click="handleMobileClick"
       />
 
-      <!-- 4. Нижние пункты -->
+      <!-- Нижние пункты -->
       <div class="mb-4 shrink-0">
         <a-menu
           mode="inline"
@@ -98,10 +98,8 @@ const themeStore = useThemeStore();
 const authStore = useAuthStore();
 const { t } = useI18n();
 
-// Используем наш хук
 const { state, menuItems, handleMenuClick, handleLogout } = useSidebar();
 
-// Обертка для клика, чтобы на мобилке меню закрывалось при переходе
 const handleMobileClick: typeof handleMenuClick = (info) => {
   handleMenuClick(info);
   emit("close");

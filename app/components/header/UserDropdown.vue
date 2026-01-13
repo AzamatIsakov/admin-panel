@@ -18,9 +18,10 @@
               {{ authStore.user?.firstName }} {{ authStore.user?.lastName }}
             </div>
             <div
+              v-if="authStore.user?.role"
               class="mt-[3px] text-xs leading-snug font-semibold text-gray-500 dark:text-gray-400"
             >
-              Admin
+              {{ capitalizeFirst(authStore.user.role) }}
             </div>
           </div>
 
@@ -44,10 +45,6 @@
               {{ item.label }}
             </a-menu-item>
           </template>
-          <!-- <a-menu-item key="logout" danger @click="authStore.logout">
-            <template #icon><LogoutOutlined /></template>
-            Logout
-          </a-menu-item> -->
         </a-menu>
       </template>
     </a-dropdown>

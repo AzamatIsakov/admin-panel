@@ -23,18 +23,19 @@ const { t } = useI18n();
 
 const themeStore = useThemeStore();
 
-// 1. Принимаем данные снаружи
-const props = defineProps<{
+interface Props {
   dataValues: number[]; // Массив чисел для графика
   labels: string[]; // Подписи оси X
-}>();
+}
+
+const props = defineProps<Props>();
 
 const chartData = computed(() => ({
   labels: props.labels, // Используем пропс
   datasets: [
     {
       label: "Sales",
-      data: props.dataValues, // Используем пропс
+      data: props.dataValues,
       borderColor: "#4880FF",
       backgroundColor: (context: ScriptableContext<"line">) => {
         const ctx = context.chart.ctx;
@@ -67,7 +68,7 @@ ChartJS.register(
   Filler
 );
 
-// Данные (Фейковые для демо, имитируем продажи за год)
+// Данные (Фейковые для демо)
 const labels = computed(() => [
   t("dashboard.sales_chart.months.jan"),
   t("dashboard.sales_chart.months.feb"),
@@ -83,11 +84,10 @@ const labels = computed(() => [
   t("dashboard.sales_chart.months.dec"),
 ]);
 
-// 2. Настройки (Оси, сетка, тултипы)
-// Computed нужен, чтобы при смене темы перерисовывались цвета сетки
+// Настройки (Оси, сетка, тултипы)
 const chartOptions = computed(() => {
-  const textColor = themeStore.isDark ? "#E5E7EB" : "#6B7280"; // gray-200 / gray-500
-  const gridColor = themeStore.isDark ? "#374151" : "#F3F4F6"; // gray-700 / gray-100
+  const textColor = themeStore.isDark ? "#E5E7EB" : "#6B7280";
+  const gridColor = themeStore.isDark ? "#374151" : "#F3F4F6";
 
   return {
     responsive: true,

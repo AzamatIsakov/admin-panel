@@ -48,6 +48,7 @@
         </a-select>
       </a-form-item>
 
+      <!-- ЗАХАРДКОДИЛ =( -->
       <a-form-item :label="t('users.fields.blood_group')" name="bloodGroup">
         <a-select v-model:value="formState.bloodGroup" size="large">
           <a-select-option value="A+">A+</a-select-option>

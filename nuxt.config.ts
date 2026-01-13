@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   i18n: {
     langDir: "", // Папка с переводами
     defaultLocale: "en",
-    strategy: "no_prefix", // Не добавлять /ru или /uz в URL
+    strategy: "no_prefix",
     locales: [
       { code: "en", file: "en.json", name: "English", iso: "en-US" },
       { code: "ru", file: "ru.json", name: "Русский", iso: "ru-RU" },
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      "Nunito+Sans": [300, 400, 600, 700, 800], // Веса из твоего списка
+      "Nunito+Sans": [300, 400, 600, 700, 800],
     },
     display: "swap",
   },

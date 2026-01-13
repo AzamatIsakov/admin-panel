@@ -84,7 +84,7 @@
       </template>
     </a-table>
 
-    <!-- Кастомный Футер (Локализованный) -->
+    <!-- Кастомный Футер -->
     <div
       class="py-4 flex flex-col md:flex-row justify-between items-center gap-4 px-2"
     >

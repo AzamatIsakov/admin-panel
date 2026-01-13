@@ -10,7 +10,6 @@ export const useCategories = () => {
   const loading = ref(false);
 
   const fetchCategories = async () => {
-    // Если уже загружали - не грузим повторно (кэширование в рамках сессии компонента)
     if (categories.value.length > 0) return;
 
     loading.value = true;

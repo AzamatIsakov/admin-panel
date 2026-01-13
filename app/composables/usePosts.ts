@@ -1,7 +1,6 @@
 export const usePosts = () => {
   const total = ref(0);
 
-  // Нам пока нужно только количество для дашборда
   const fetchPostsCount = async () => {
     try {
       const { data } = await useApi<any>("/posts", {

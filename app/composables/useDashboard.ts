@@ -1,13 +1,10 @@
 export const useDashboard = () => {
   const loading = ref(false);
 
-  // Подключаем наши новые хуки
   const { fetchUsers, total: totalUsers } = useUsers();
   const { fetchProducts, total: totalProducts } = useProducts();
   const { fetchPostsCount, total: totalPosts } = usePosts();
 
-  // Итоговая статистика для UI
-  // Мы используем computed, чтобы они реактивно обновлялись, когда обновляются хуки
   const stats = reactive({
     users: computed(() => totalUsers.value),
     products: computed(() => totalProducts.value),
@@ -21,8 +18,8 @@ export const useDashboard = () => {
     try {
       // Запрашиваем параллельно
       await Promise.all([
-        fetchUsers({ limit: 1 }), // Нам нужно только количество
-        fetchProducts({ limit: 1 }), // Нам нужно только количество
+        fetchUsers({ limit: 1 }),
+        fetchProducts({ limit: 1 }),
         fetchPostsCount(),
       ]);
     } catch (e) {

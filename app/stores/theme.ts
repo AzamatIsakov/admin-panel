@@ -16,7 +16,6 @@ export const useThemeStore = defineStore(
     };
   },
   {
-    // Включаем сохранение в localStorage
     // Теперь при перезагрузке страницы тема не сбросится
     persist: true,
   }

@@ -7,7 +7,7 @@ export const useProducts = () => {
 
   const pagination = reactive({
     current: 1,
-    pageSize: 9, // Дефолт как на макете
+    pageSize: 10,
   });
 
   // Новые состояния для сортировки
@@ -21,17 +21,17 @@ export const useProducts = () => {
       page?: number;
       pageSize?: number;
       search?: string;
-      limit?: number; // Для совместимости с Dashboard
-      skip?: number; // Для совместимости с Dashboard
+      limit?: number;
+      skip?: number;
       sortBy?: string;
       order?: "asc" | "desc";
     } = {}
   ) => {
     loading.value = true;
 
-    // 1. Обновляем локальный стейт
+    // Обновляем локальный стейт
     pagination.current = params.page || 1;
-    pagination.pageSize = params.pageSize || 9;
+    pagination.pageSize = params.pageSize || 10;
     sortState.sortBy = params.sortBy || "";
     sortState.order = params.order || "";
 

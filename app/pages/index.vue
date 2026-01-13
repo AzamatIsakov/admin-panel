@@ -84,10 +84,10 @@ const { t } = useI18n();
 const { stats, loading, fetchStats } = useDashboard();
 const themeStore = useThemeStore();
 
-// 1. Состояние дропдауна
+// Состояние дропдауна
 const selectedPeriod = ref<"october" | "november">("october");
 
-// 2. Фейковые данные для разных месяцев (имитация ответа API)
+// Фейковые данные для разных месяцев (имитация ответа API)
 // Ось X (Дни месяца, упрощенно)
 const chartLabels = [
   "5k",

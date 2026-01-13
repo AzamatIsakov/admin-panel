@@ -7,7 +7,7 @@ interface LayoutConfig {
 }
 
 export const useUiStore = defineStore("ui", () => {
-  // 1. Создаем реактивную связь с Cookie
+  // Создаем реактивную связь с Cookie
   // Если куки нет, ставим дефолт (например, десктоп)
   const cookie = useCookie<LayoutConfig>("layout-config", {
     maxAge: 60 * 60 * 24 * 365, // Храним 1 год
@@ -18,7 +18,7 @@ export const useUiStore = defineStore("ui", () => {
     }),
   });
 
-  // 2. State инициализируем из значения куки (оно уже доступно на сервере!)
+  // State инициализируем из значения куки (оно уже доступно на сервере!)
   const width = ref(cookie.value.screen_width);
   const height = ref(cookie.value.screen_height);
 
@@ -27,7 +27,7 @@ export const useUiStore = defineStore("ui", () => {
   const isMobile = computed(() => width.value < 1024);
   const isDesktop = computed(() => width.value >= 1024);
 
-  // 3. Action для обновления размеров (вызывается только на клиенте)
+  // Action для обновления размеров (вызывается только на клиенте)
   function updateDimensions() {
     if (import.meta.client) {
       const w = window.innerWidth;

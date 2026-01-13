@@ -78,7 +78,6 @@
               </button>
             </NuxtLink>
 
-            <!-- Локализованный Popconfirm -->
             <a-popconfirm
               :title="t('users.delete_confirm')"
               :ok-text="t('common.yes')"
@@ -103,7 +102,6 @@
       <!-- Левая часть -->
       <div class="flex items-center gap-4">
         <div class="text-gray-500 dark:text-gray-400 text-sm font-medium">
-          <!-- ИНТЕРПОЛЯЦИЯ СТРОК -->
           {{
             t("common.pagination.showing", {
               start: showingStart,
@@ -123,6 +121,7 @@
             size="small"
             @change="(val) => $emit('change', { page: 1, pageSize: val })"
           >
+            <!-- ЗАХАРДКОЖЕНО =( -->
             <a-select-option :value="10">10</a-select-option>
             <a-select-option :value="20">20</a-select-option>
             <a-select-option :value="50">50</a-select-option>
@@ -162,13 +161,15 @@ import {
 } from "@ant-design/icons-vue";
 import type { User } from "~/types/user";
 
-const props = defineProps<{
+interface Props {
   users: User[];
   loading: boolean;
   total: number;
   current: number;
   pageSize: number;
-}>();
+}
+
+const props = defineProps<Props>();
 
 const emit = defineEmits(["change", "delete", "toggleStatus"]);
 const { t } = useI18n();
