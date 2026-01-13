@@ -1,6 +1,6 @@
 <template>
   <a-layout-header
-    class="flex items-center justify-between shadow-sm !h-[70px] sticky top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-primary dark:text-white"
+    class="flex items-center justify-between shadow-sm !h-[70px] top-0 z-50 transition-colors duration-300 !bg-white dark:!bg-dark-primary dark:text-white"
     :class="uiStore.isDesktop ? '!px-[30px]' : '!px-6'"
   >
     <!-- Левая часть: Гамбургер -->

@@ -58,15 +58,6 @@ watch(
 </script>
 
 <style>
-/* Фикс для темной темы Drawer в Ant Design */
-.dark .ant-drawer-content {
-  background-color: #273142; /* Цвет dark-primary */
-  color: white;
-}
-.dark .ant-drawer-body {
-  background-color: #273142;
-}
-
 .custom-drawer .ant-drawer-body {
   @apply p-0;
 }

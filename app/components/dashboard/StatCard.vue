@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white dark:bg-dark-primary p-4 rounded-[14px] shadow-sm transition-colors duration-300"
+    class="min-w-[262px] bg-white dark:bg-dark-primary p-4 rounded-[14px] shadow-sm transition-colors duration-300"
   >
     <div class="flex flex-col gap-[30px] justify-between items-start h-full">
       <div class="flex gap-4 justify-between w-full">
@@ -62,11 +62,9 @@ const props = defineProps<{
 }>();
 
 // Форматируем число (например: 40,689)
-const formattedValue = computed(() => {
-  return typeof props.value === "number"
-    ? new Intl.NumberFormat("en-US").format(props.value)
-    : props.value;
-});
+const formattedValue = computed(() =>
+  typeof props.value === "number" ? formatMoney(props.value) : props.value
+);
 
 // Стили для иконки в зависимости от цвета
 const iconStyles = computed(() => {

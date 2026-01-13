@@ -21,6 +21,40 @@ import { Line } from "vue-chartjs";
 
 const { t } = useI18n();
 
+const themeStore = useThemeStore();
+
+// 1. Принимаем данные снаружи
+const props = defineProps<{
+  dataValues: number[]; // Массив чисел для графика
+  labels: string[]; // Подписи оси X
+}>();
+
+const chartData = computed(() => ({
+  labels: props.labels, // Используем пропс
+  datasets: [
+    {
+      label: "Sales",
+      data: props.dataValues, // Используем пропс
+      borderColor: "#4880FF",
+      backgroundColor: (context: ScriptableContext<"line">) => {
+        const ctx = context.chart.ctx;
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, "rgba(72, 128, 255, 0.4)");
+        gradient.addColorStop(1, "rgba(72, 128, 255, 0)");
+        return gradient;
+      },
+      borderWidth: 3,
+      tension: 0.4,
+      pointBackgroundColor: "#fff",
+      pointBorderColor: "#4880FF",
+      pointBorderWidth: 2,
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      fill: true,
+    },
+  ],
+}));
+
 // Регистрация модулей Chart.js
 ChartJS.register(
   CategoryScale,
@@ -32,8 +66,6 @@ ChartJS.register(
   Legend,
   Filler
 );
-
-const themeStore = useThemeStore();
 
 // Данные (Фейковые для демо, имитируем продажи за год)
 const labels = computed(() => [
@@ -50,37 +82,6 @@ const labels = computed(() => [
   t("dashboard.sales_chart.months.nov"),
   t("dashboard.sales_chart.months.dec"),
 ]);
-const dataValues = [
-  12000, 19000, 15000, 25000, 22000, 30000, 28000, 35000, 20000, 45000, 38000,
-  42000,
-];
-
-// 1. Данные графика с Градиентом
-const chartData = computed(() => ({
-  labels: labels.value,
-  datasets: [
-    {
-      label: "Sales",
-      data: dataValues,
-      borderColor: "#4880FF", // Синий цвет из макета
-      backgroundColor: (context: ScriptableContext<"line">) => {
-        const ctx = context.chart.ctx;
-        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, "rgba(72, 128, 255, 0.4)"); // Сверху синий полупрозрачный
-        gradient.addColorStop(1, "rgba(72, 128, 255, 0)"); // Снизу прозрачный
-        return gradient;
-      },
-      borderWidth: 3,
-      tension: 0.4, // Делает линию плавной (кривая Безье)
-      pointBackgroundColor: "#fff",
-      pointBorderColor: "#4880FF",
-      pointBorderWidth: 2,
-      pointRadius: 4,
-      pointHoverRadius: 6,
-      fill: true, // Включаем заливку под графиком
-    },
-  ],
-}));
 
 // 2. Настройки (Оси, сетка, тултипы)
 // Computed нужен, чтобы при смене темы перерисовывались цвета сетки
@@ -118,14 +119,17 @@ const chartOptions = computed(() => {
         },
       },
       y: {
-        beginAtZero: true,
+        min: 20,
+        max: 100,
+        beginAtZero: false,
         grid: {
           color: gridColor, // Цвет горизонтальных линий
           borderDash: [5, 5], // Пунктирная линия
         },
         ticks: {
+          stepSize: 20,
           color: textColor,
-          callback: (value: any) => `${value / 1000}k`, // Сокращаем 10000 до 10k
+          callback: (value: any) => `${value}%`,
         },
         border: {
           display: false, // Убираем левую линию оси Y

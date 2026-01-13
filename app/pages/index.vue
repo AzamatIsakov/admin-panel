@@ -22,7 +22,7 @@
     <!-- Реальные карточки -->
     <div
       v-else
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px] mb-8"
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[30px] mb-8"
     >
       <DashboardStatCard
         v-for="item in dashboardItems"
@@ -37,16 +37,16 @@
 
     <!-- Секция графика -->
     <div
-      class="bg-white dark:bg-dark-primary p-8 rounded-[14px] shadow-sm mb-8 transition-colors duration-300"
+      class="bg-white dark:bg-dark-primary p-4 lg:p-8 rounded-[14px] shadow-sm mb-8 transition-colors duration-300"
     >
-      <div class="flex justify-between items-center mb-6">
+      <div class="flex justify-between items-center mb-6 lg:mb-[50px]">
         <h3 class="text-xl font-bold text-[#202224] dark:text-white">
-          Sales Details
+          {{ t("dashboard.sales_details") }}
         </h3>
 
-        <!-- Дропдаун выбора месяца (фейковый для вида) -->
+        <!-- Дропдаун теперь управляет состоянием -->
         <a-select
-          defaultValue="october"
+          v-model:value="selectedPeriod"
           class="w-32"
           :class="{ 'dark-select': themeStore.isDark }"
         >
@@ -57,15 +57,14 @@
 
       <div class="h-[350px] w-full">
         <ClientOnly>
-          <DashboardSalesChart />
+          <!-- Передаем динамические данные -->
+          <DashboardSalesChart
+            :data-values="currentChartData"
+            :labels="chartLabels"
+          />
 
-          <!-- Скелетон на случай долгой загрузки чанка с графиком -->
           <template #fallback>
-            <div
-              class="w-full h-full flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded animate-pulse"
-            >
-              Loading Chart...
-            </div>
+            <!-- Скелетон -->
           </template>
         </ClientOnly>
       </div>
@@ -84,6 +83,34 @@ import {
 const { t } = useI18n();
 const { stats, loading, fetchStats } = useDashboard();
 const themeStore = useThemeStore();
+
+// 1. Состояние дропдауна
+const selectedPeriod = ref<"october" | "november">("october");
+
+// 2. Фейковые данные для разных месяцев (имитация ответа API)
+// Ось X (Дни месяца, упрощенно)
+const chartLabels = [
+  "5k",
+  "10k",
+  "15k",
+  "20k",
+  "25k",
+  "30k",
+  "35k",
+  "40k",
+  "45k",
+  "50k",
+  "55k",
+  "60k",
+];
+
+const datasets = {
+  october: [20, 45, 30, 80, 40, 55, 25, 60, 45, 65, 40, 55], // Данные как на макете
+  november: [35, 25, 45, 60, 70, 40, 55, 30, 50, 40, 60, 75], // Другие данные, чтобы было видно изменение
+};
+
+// 3. Вычисляем текущие данные на основе выбора
+const currentChartData = computed(() => datasets[selectedPeriod.value]);
 
 fetchStats();
 
@@ -107,7 +134,7 @@ const dashboardItems = computed(() => [
   // Total Sales (Зеленый)
   {
     title: t("dashboard.stat_card.total_sales"),
-    value: `$${stats.sales}`,
+    value: `$${formatMoney(stats.sales)}`,
     trend: -4.3,
     color: "green",
     icon: LineChartOutlined,
