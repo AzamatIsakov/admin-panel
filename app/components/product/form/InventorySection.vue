@@ -18,7 +18,15 @@
       <a-form-item
         :label="t('products.fields.stock')"
         name="stock"
-        :rules="[{ required: true, message: t('validation.required') }]"
+        :rules="[
+          { required: true, message: t('validation.required') },
+          {
+            type: 'number',
+            min: 0,
+            message: t('validation.number_min', { min: 0 }),
+            trigger: 'change',
+          },
+        ]"
       >
         <a-input-number
           v-model:value="formState.stock"
@@ -33,11 +41,9 @@
 
 <script setup lang="ts">
 import type { ProductFormState } from "~/types/form";
-
 interface Props {
   formState: ProductFormState;
 }
-
 defineProps<Props>();
 const { t } = useI18n();
 </script>

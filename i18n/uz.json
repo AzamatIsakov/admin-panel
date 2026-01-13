@@ -92,8 +92,10 @@
 
   "validation": {
     "required": "Ushbu maydon to'ldirilishi shart",
-    "number_min": "Qiymat {min} dan katta yoki teng bo'lishi kerak",
-    "url_invalid": "Iltimos, to'g'ri URL kiriting",
+    "min_length": "Kamida {min} ta belgi bo'lishi kerak",
+    "url_invalid": "Iltimos, to'g'ri URL kiriting (http/https)",
+    "number_min": "Qiymat {min} dan kam bo'lmasligi kerak",
+    "number_max": "Qiymat {max} dan ko'p bo'lmasligi kerak",
     "select_required": "Iltimos, variantni tanlang"
   },
 

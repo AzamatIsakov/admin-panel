@@ -6,11 +6,17 @@
       {{ t("products.sections.general") }}
     </h3>
 
-    <!-- Title -->
     <a-form-item
       :label="t('products.fields.title')"
       name="title"
-      :rules="[{ required: true, message: t('validation.required') }]"
+      :rules="[
+        { required: true, message: t('validation.required') },
+        {
+          min: 3,
+          message: t('validation.min_length', { min: 3 }),
+          trigger: 'blur',
+        },
+      ]"
     >
       <a-input
         v-model:value="formState.title"
@@ -19,7 +25,6 @@
       />
     </a-form-item>
 
-    <!-- Description -->
     <a-form-item
       :label="t('products.fields.description')"
       name="description"
@@ -33,7 +38,6 @@
       />
     </a-form-item>
 
-    <!-- Warranty Information -->
     <a-form-item
       :label="t('products.fields.warranty')"
       name="warrantyInformation"
@@ -53,8 +57,6 @@ import type { ProductFormState } from "~/types/form";
 interface Props {
   formState: ProductFormState;
 }
-
 defineProps<Props>();
-
 const { t } = useI18n();
 </script>

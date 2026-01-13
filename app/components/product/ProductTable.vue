@@ -172,20 +172,22 @@ const columns = [
     title: "Product Name",
     dataIndex: "title",
     key: "title",
-    sorter: true, // Включаем сортировку
+    sorter: true,
     width: 400,
   },
   {
     title: "Category",
     dataIndex: "category",
     key: "category",
+    width: 350,
     // Сюда можно добавить filters, если захотим фильтрацию
   },
   {
     title: "Price",
     dataIndex: "price",
     key: "price",
-    sorter: true, // Включаем сортировку
+    sorter: true,
+    width: 350,
   },
   { title: "Piece", dataIndex: "stock", key: "stock", sorter: true },
   { title: "Available Color", key: "colors" },

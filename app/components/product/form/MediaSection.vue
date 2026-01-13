@@ -7,7 +7,14 @@
     </h3>
 
     <!-- Thumbnail -->
-    <a-form-item :label="t('products.fields.thumbnail')" name="thumbnail">
+    <a-form-item
+      :label="t('products.fields.thumbnail')"
+      name="thumbnail"
+      :rules="[
+        { required: true, message: t('validation.required') },
+        { type: 'url', message: t('validation.url_invalid'), trigger: 'blur' },
+      ]"
+    >
       <a-input
         v-model:value="formState.thumbnail"
         placeholder="https://..."
@@ -25,11 +32,40 @@
 
     <!-- Images List -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <a-form-item :label="`${t('products.fields.images')} (1)`">
-        <a-input v-model:value="formState.images[0]" placeholder="URL 1" />
+      <!-- Image 1 -->
+      <a-form-item
+        :label="`${t('products.fields.images')} (1)`"
+        :name="['images', 0]"
+        :rules="[
+          {
+            type: 'url',
+            message: t('validation.url_invalid'),
+            trigger: 'blur',
+          },
+        ]"
+      >
+        <a-input
+          v-model:value="formState.images[0]"
+          placeholder="https://..."
+        />
       </a-form-item>
-      <a-form-item :label="`${t('products.fields.images')} (2)`">
-        <a-input v-model:value="formState.images[1]" placeholder="URL 2" />
+
+      <!-- Image 2 -->
+      <a-form-item
+        :label="`${t('products.fields.images')} (2)`"
+        :name="['images', 1]"
+        :rules="[
+          {
+            type: 'url',
+            message: t('validation.url_invalid'),
+            trigger: 'blur',
+          },
+        ]"
+      >
+        <a-input
+          v-model:value="formState.images[1]"
+          placeholder="https://..."
+        />
       </a-form-item>
     </div>
   </div>
@@ -42,7 +78,6 @@ import type { ProductFormState } from "~/types/form";
 interface Props {
   formState: ProductFormState;
 }
-
 defineProps<Props>();
 const { t } = useI18n();
 </script>

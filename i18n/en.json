@@ -92,8 +92,10 @@
 
   "validation": {
     "required": "This field is required",
-    "number_min": "Value must be greater than or equal to {min}",
-    "url_invalid": "Please enter a valid URL",
+    "min_length": "Must be at least {min} characters",
+    "url_invalid": "Please enter a valid URL (http/https)",
+    "number_min": "Value cannot be less than {min}",
+    "number_max": "Value cannot be greater than {max}",
     "select_required": "Please select an option"
   },
 

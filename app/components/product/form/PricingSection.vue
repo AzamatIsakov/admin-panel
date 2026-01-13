@@ -7,10 +7,19 @@
     </h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Price -->
       <a-form-item
         :label="t('products.fields.price')"
         name="price"
-        :rules="[{ required: true, message: t('validation.required') }]"
+        :rules="[
+          { required: true, message: t('validation.required') },
+          {
+            type: 'number',
+            min: 0,
+            message: t('validation.number_min', { min: 0 }),
+            trigger: 'change',
+          },
+        ]"
       >
         <a-input-number
           v-model:value="formState.price"
@@ -21,9 +30,24 @@
         />
       </a-form-item>
 
+      <!-- Discount -->
       <a-form-item
         :label="t('products.fields.discount')"
         name="discountPercentage"
+        :rules="[
+          {
+            type: 'number',
+            min: 0,
+            message: t('validation.number_min', { min: 0 }),
+            trigger: 'change',
+          },
+          {
+            type: 'number',
+            max: 100,
+            message: t('validation.number_max', { max: 100 }),
+            trigger: 'change',
+          },
+        ]"
       >
         <a-input-number
           v-model:value="formState.discountPercentage"
@@ -40,11 +64,9 @@
 
 <script setup lang="ts">
 import type { ProductFormState } from "~/types/form";
-
 interface Props {
   formState: ProductFormState;
 }
-
 defineProps<Props>();
 const { t } = useI18n();
 </script>
