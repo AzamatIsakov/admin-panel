@@ -23,10 +23,13 @@ useScreenListener();
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
 const themeStore = useThemeStore();
+const authStore = useAuthStore();
 
 useHead({
   htmlAttrs: {
     class: () => (themeStore.isDark ? "dark" : ""),
   },
 });
+
+if (authStore.token) await authStore.fetchCurrentUser();
 </script>

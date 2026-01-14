@@ -28,7 +28,6 @@ export function useApi<T>(
     },
 
     async onResponseError({ response }) {
-      // Если пришла ошибка 401 (Unauthorized), значит токен протух
       if (response.status === 401) {
         const success = await authStore.refreshUserToken();
 

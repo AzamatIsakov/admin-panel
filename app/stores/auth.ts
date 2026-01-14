@@ -45,6 +45,26 @@ export const useAuthStore = defineStore(
       }
     }
 
+    // User me Получение текущего юзера
+    async function fetchCurrentUser() {
+      if (!token.value) return;
+
+      try {
+        const { data, error } = await useApi<User>("/auth/me");
+        console.log(data.value);
+
+        if (data.value) {
+          Object.assign(user.value || {}, data.value);
+        } else if (error.value) {
+          if (error.value.statusCode === 401) {
+            // logout();
+          }
+        }
+      } catch (e) {
+        console.error("Failed to fetch current user", e);
+      }
+    }
+
     // Refresh token
     async function refreshUserToken() {
       // Если нет рефреш токена, мы ничего не можем сделать -> выход
@@ -89,6 +109,7 @@ export const useAuthStore = defineStore(
       refreshToken,
       isAuthenticated,
       login,
+      fetchCurrentUser,
       refreshUserToken,
       logout,
     };
