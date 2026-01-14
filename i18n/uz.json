@@ -1,6 +1,6 @@
 {
   "auth": {
-    "title": "Hisobga kirish",
+    "title": "Tizimga kirish",
     "subtitle": "Davom etish uchun email va parolni kiriting",
     "email_label": "Email manzil:",
     "email_placeholder": "misol{'@'}mail.com",
@@ -8,8 +8,8 @@
     "forgot_password": "Parolni unutdingizmi?",
     "remember_me": "Parolni eslab qolish",
     "sign_in": "Kirish",
-    "no_account": "Hisobingiz yo'qmi?",
-    "create_account": "Hisob yaratish"
+    "no_account": "Akkauntiz yo'qmi?",
+    "create_account": "Akkauntiz yaratish"
   },
 
   "menu": {
@@ -164,7 +164,8 @@
     "user_success_update": "Foydalanuvchi muvaffaqiyatli yangilandi",
     "error_load": "Ma'lumotlarni yuklab bo'lmadi",
     "error_operation": "Jarayon amalga oshmadi",
-    "error_api": "API xatosi"
+    "error_api": "API xatosi",
+    "success_login": "Kirish muvaffaqiyatli"
   },
 
   "users": {
@@ -210,7 +211,7 @@
       "address": "Manzil",
       "physical": "Jismoniy xususiyatlar",
       "professional": "Ish va Bank",
-      "account": "Hisob holati"
+      "account": "Akkaunt holati"
     },
 
     "fields": {

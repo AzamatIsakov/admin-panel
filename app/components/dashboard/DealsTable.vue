@@ -115,7 +115,7 @@ fetchProducts({ pageSize: 5 });
 }
 
 .deals-table .ant-table-thead .ant-table-cell {
-  @apply bg-[#323D4E];
+  @apply bg-[#F1F4F9] dark:bg-[#323D4E];
 }
 
 .deals-table .ant-table {

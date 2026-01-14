@@ -89,7 +89,7 @@ const userMenuItems = computed(() => [
 
 const handleSelect: MenuProps["onClick"] = (data) => {
   const eventId = data.item.id;
-  console.log(eventId);
+  // console.log(eventId);
 
   if (eventId === "logout") authStore.logout();
 };

@@ -164,7 +164,8 @@
     "user_success_update": "Пользователь успешно обновлен",
     "error_load": "Не удалось загрузить данные",
     "error_operation": "Операция не удалась",
-    "error_api": "Ошибка API"
+    "error_api": "Ошибка API",
+    "success_login": "Вход выполнен"
   },
 
   "users": {

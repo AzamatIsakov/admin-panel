@@ -15,7 +15,6 @@ export const useAuthStore = defineStore(
     // Логин
     async function login(username: string, password: string) {
       try {
-        // Используем наш useApi. Обрати внимание на POST метод.
         const { data, error } = await useApi<LoginResponse>("/auth/login", {
           method: "POST",
           body: { username, password },
@@ -38,13 +37,41 @@ export const useAuthStore = defineStore(
           } = data.value;
           user.value = { ...userData, role: "admin" };
 
-          // Редирект на главную (Dashboard) после успешного входа
-          // Используем navigateTo (нативный метод Nuxt)
           return navigateTo("/");
         }
       } catch (err) {
         console.error("Login error:", err);
-        throw err; // Пробрасываем ошибку, чтобы показать её в UI компоненте
+        throw err;
+      }
+    }
+
+    // Refresh token
+    async function refreshUserToken() {
+      // Если нет рефреш токена, мы ничего не можем сделать -> выход
+      if (!refreshToken.value) {
+        logout();
+        return false;
+      }
+
+      try {
+        const data = await $fetch<any>("https://dummyjson.com/auth/refresh", {
+          method: "POST",
+          body: {
+            refreshToken: refreshToken.value,
+            expiresInMins: 60,
+          },
+        });
+
+        token.value = data.accessToken;
+        refreshToken.value = data.refreshToken;
+
+        console.log("Token refreshed successfully");
+        return true;
+      } catch (error) {
+        console.error("Refresh token expired or invalid", error);
+        // Если не удалось обновить токен — значит сессия умерла окончательно
+        logout();
+        return false;
       }
     }
 
@@ -62,6 +89,7 @@ export const useAuthStore = defineStore(
       refreshToken,
       isAuthenticated,
       login,
+      refreshUserToken,
       logout,
     };
   },

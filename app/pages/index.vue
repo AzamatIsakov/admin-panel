@@ -50,8 +50,12 @@
           class="w-32"
           :class="{ 'dark-select': themeStore.isDark }"
         >
-          <a-select-option value="october">October</a-select-option>
-          <a-select-option value="november">November</a-select-option>
+          <a-select-option value="october">{{
+            t("dashboard.months.october")
+          }}</a-select-option>
+          <a-select-option value="november">{{
+            t("dashboard.months.november")
+          }}</a-select-option>
         </a-select>
       </div>
 

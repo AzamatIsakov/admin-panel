@@ -164,7 +164,8 @@
     "user_success_update": "User updated successfully",
     "error_load": "Failed to load data",
     "error_operation": "Operation failed",
-    "error_api": "API Error"
+    "error_api": "API Error",
+    "success_login": "Login successful"
   },
 
   "users": {
