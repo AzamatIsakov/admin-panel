@@ -45,7 +45,31 @@
       }
     },
 
-    "sales_details": "Savdo tafsilotlari"
+    "sales_details": "Savdo tafsilotlari",
+
+    "deals_title": "Bitim tafsilotlari",
+    "months": {
+      "october": "Oktyabr",
+      "november": "Noyabr"
+    },
+    "columns": {
+      "product": "Mahsulot nomi",
+      "location": "Joylashuv",
+      "date": "Sana - Vaqt",
+      "piece": "Dona",
+      "amount": "Summa",
+      "status": "Holat"
+    },
+    "status": {
+      "delivered": "Yetkazib berildi",
+      "pending": "Kutilmoqda",
+      "canceled": "Bekor qilindi"
+    }
+  },
+
+  "error": {
+    "not_found": "Adashib qoldingiz shekilli...",
+    "back_home": "Bosh sahifaga qaytish"
   },
 
   "products": {

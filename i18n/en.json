@@ -45,7 +45,31 @@
       }
     },
 
-    "sales_details": "Sales Details"
+    "sales_details": "Sales Details",
+
+    "deals_title": "Deals Details",
+    "months": {
+      "october": "October",
+      "november": "November"
+    },
+    "columns": {
+      "product": "Product Name",
+      "location": "Location",
+      "date": "Date - Time",
+      "piece": "Piece",
+      "amount": "Amount",
+      "status": "Status"
+    },
+    "status": {
+      "delivered": "Delivered",
+      "pending": "Pending",
+      "canceled": "Canceled"
+    }
+  },
+
+  "error": {
+    "not_found": "Looks like you've got lost...",
+    "back_home": "Back to Dashboard"
   },
 
   "products": {

@@ -69,6 +69,10 @@
         </ClientOnly>
       </div>
     </div>
+
+    <div class="mt-8">
+      <DashboardDealsTable />
+    </div>
   </div>
 </template>
 

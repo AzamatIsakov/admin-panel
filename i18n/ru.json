@@ -45,7 +45,31 @@
       }
     },
 
-    "sales_details": "Детали продаж"
+    "sales_details": "Детали продаж",
+
+    "deals_title": "Детали сделок",
+    "months": {
+      "october": "Октябрь",
+      "november": "Ноябрь"
+    },
+    "columns": {
+      "product": "Товар",
+      "location": "Локация",
+      "date": "Дата - Время",
+      "piece": "Шт.",
+      "amount": "Сумма",
+      "status": "Статус"
+    },
+    "status": {
+      "delivered": "Доставлено",
+      "pending": "В ожидании",
+      "canceled": "Отменено"
+    }
+  },
+
+  "error": {
+    "not_found": "Похоже, вы потерялись...",
+    "back_home": "Вернуться на главную"
   },
 
   "products": {
