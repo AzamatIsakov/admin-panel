@@ -75,6 +75,7 @@ export const useUsers = () => {
       }
     } catch (e) {
       console.error("Error fetching users:", e);
+      message.error(t("messages.error_operation"));
     } finally {
       loading.value = false;
     }

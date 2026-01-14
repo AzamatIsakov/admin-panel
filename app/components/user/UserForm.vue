@@ -123,8 +123,8 @@ const handleSubmit = async () => {
     if (!error.value) {
       message.success(
         isEditMode.value
-          ? t("messages.success_update")
-          : t("messages.success_create")
+          ? t("messages.user_success_update")
+          : t("messages.user_success_create")
       );
       navigateTo("/users");
     } else {

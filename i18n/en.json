@@ -1,4 +1,17 @@
 {
+  "auth": {
+    "title": "Login to Account",
+    "subtitle": "Please enter your email and password to continue",
+    "email_label": "Email address:",
+    "email_placeholder": "esteban_schiller{'@'}gmail.com",
+    "password_label": "Password",
+    "forgot_password": "Forget Password?",
+    "remember_me": "Remember Password",
+    "sign_in": "Sign In",
+    "no_account": "Don’t have an account?",
+    "create_account": "Create Account"
+  },
+
   "menu": {
     "dashboard": "Dashboard",
     "products": "Products",
@@ -139,13 +152,16 @@
     "number_min": "Value cannot be less than {min}",
     "number_max": "Value cannot be greater than {max}",
     "select_required": "Please select an option",
-    "email_format": "Invalid email format"
+    "email_format": "Invalid email format",
+    "email_invalid": "Please enter a valid email"
   },
 
   "messages": {
-    "success_create": "Product created successfully",
-    "success_update": "Product updated successfully",
-    "success_delete": "Product deleted successfully",
+    "product_success_create": "Product created successfully",
+    "product_success_update": "Product updated successfully",
+    "product_success_delete": "Product deleted successfully",
+    "user_success_create": "User created successfully",
+    "user_success_update": "User updated successfully",
     "error_load": "Failed to load data",
     "error_operation": "Operation failed",
     "error_api": "API Error"

@@ -1,4 +1,17 @@
 {
+  "auth": {
+    "title": "Hisobga kirish",
+    "subtitle": "Davom etish uchun email va parolni kiriting",
+    "email_label": "Email manzil:",
+    "email_placeholder": "misol{'@'}mail.com",
+    "password_label": "Parol",
+    "forgot_password": "Parolni unutdingizmi?",
+    "remember_me": "Parolni eslab qolish",
+    "sign_in": "Kirish",
+    "no_account": "Hisobingiz yo'qmi?",
+    "create_account": "Hisob yaratish"
+  },
+
   "menu": {
     "dashboard": "Boshqaruv paneli",
     "products": "Mahsulotlar",
@@ -139,13 +152,16 @@
     "number_min": "Qiymat {min} dan kam bo'lmasligi kerak",
     "number_max": "Qiymat {max} dan ko'p bo'lmasligi kerak",
     "select_required": "Iltimos, variantni tanlang",
-    "email_format": "Email formati noto'g'ri"
+    "email_format": "Email formati noto'g'ri",
+    "email_invalid": "To'g'ri email kiriting"
   },
 
   "messages": {
-    "success_create": "Mahsulot muvaffaqiyatli yaratildi",
-    "success_update": "Mahsulot muvaffaqiyatli yangilandi",
-    "success_delete": "Mahsulot muvaffaqiyatli o'chirildi",
+    "product_success_create": "Mahsulot muvaffaqiyatli yaratildi",
+    "product_success_update": "Mahsulot muvaffaqiyatli yangilandi",
+    "product_success_delete": "Mahsulot muvaffaqiyatli o'chirildi",
+    "user_success_create": "Foydalanuvchi muvaffaqiyatli yaratildi",
+    "user_success_update": "Foydalanuvchi muvaffaqiyatli yangilandi",
     "error_load": "Ma'lumotlarni yuklab bo'lmadi",
     "error_operation": "Jarayon amalga oshmadi",
     "error_api": "API xatosi"

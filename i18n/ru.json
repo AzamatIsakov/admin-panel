@@ -1,4 +1,17 @@
 {
+  "auth": {
+    "title": "Вход в аккаунт",
+    "subtitle": "Пожалуйста, введите email и пароль для продолжения",
+    "email_label": "Email адрес:",
+    "email_placeholder": "example{'@'}mail.com",
+    "password_label": "Пароль",
+    "forgot_password": "Забыли пароль?",
+    "remember_me": "Запомнить пароль",
+    "sign_in": "Войти",
+    "no_account": "Нет аккаунта?",
+    "create_account": "Создать аккаунт"
+  },
+
   "menu": {
     "dashboard": "Дашборд",
     "products": "Товары",
@@ -139,13 +152,16 @@
     "number_min": "Значение не может быть меньше {min}",
     "number_max": "Значение не может быть больше {max}",
     "select_required": "Пожалуйста, выберите вариант",
-    "email_format": "Неверный формат email"
+    "email_format": "Неверный формат email",
+    "email_invalid": "Введите корректный email"
   },
 
   "messages": {
-    "success_create": "Товар успешно создан",
-    "success_update": "Товар успешно обновлен",
-    "success_delete": "Товар успешно удален",
+    "product_success_create": "Товар успешно создан",
+    "product_success_update": "Товар успешно обновлен",
+    "product_success_delete": "Товар успешно удален",
+    "user_success_create": "Пользователь успешно создан",
+    "user_success_update": "Пользователь успешно обновлен",
     "error_load": "Не удалось загрузить данные",
     "error_operation": "Операция не удалась",
     "error_api": "Ошибка API"

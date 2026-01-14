@@ -123,8 +123,8 @@ const handleSubmit = async () => {
     if (!error.value) {
       message.success(
         isEditMode.value
-          ? t("messages.success_update")
-          : t("messages.success_create")
+          ? t("messages.product_success_update")
+          : t("messages.product_success_create")
       );
       navigateTo("/products");
     } else {

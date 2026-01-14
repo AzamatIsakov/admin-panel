@@ -5,6 +5,8 @@ export const useProducts = () => {
   const total = ref(0);
   const loading = ref(false);
 
+  const { t } = useI18n();
+
   const pagination = reactive({
     current: 1,
     pageSize: 10,
@@ -68,6 +70,7 @@ export const useProducts = () => {
       }
     } catch (e) {
       console.error("Error fetching products:", e);
+      message.error(t("messages.error_operation"));
     } finally {
       loading.value = false;
     }
@@ -79,8 +82,11 @@ export const useProducts = () => {
       // Оптимистичное удаление из UI
       products.value = products.value.filter((p) => p.id !== id);
       total.value--;
+
+      message.success(t("messages.product_success_delete"));
     } catch (e) {
       console.error("Delete failed", e);
+      message.error(t("messages.error_operation"));
     }
   };
 
